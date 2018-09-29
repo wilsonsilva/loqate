@@ -11,6 +11,21 @@ SimpleCov.start do
 end
 
 require 'loqate'
+require 'vcr'
+require 'webmock'
+
+WebMock.disable_net_connect!(allow_localhost: true)
+
+VCR.configure do |config|
+  config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
+  config.hook_into :webmock
+  config.configure_rspec_metadata!
+  config.ignore_localhost = true
+
+  # Allow continue re-recording with flag VCR=all
+  record_mode = ENV['VCR'] ? ENV['VCR'].to_sym : :none
+  config.default_cassette_options = { record: record_mode }
+end
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

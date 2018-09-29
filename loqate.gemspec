@@ -39,6 +39,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop-rspec', '~> 1.29'
   spec.add_development_dependency 'simplecov', '~> 0.16'
   spec.add_development_dependency 'simplecov-console', '~> 0.4'
+  spec.add_development_dependency 'vcr', '~> 4.0'
+  spec.add_development_dependency 'webmock', '~> 3.4'
   spec.add_development_dependency 'yard', '~> 0.9'
   spec.add_development_dependency 'yard-junk', '~> 0.0.7'
   spec.add_development_dependency 'yardstick', '~> 0.9'
