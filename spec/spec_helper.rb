@@ -13,6 +13,11 @@ end
 require 'loqate'
 require 'vcr'
 require 'webmock'
+require 'webmock/rspec'
+require 'pry'
+
+# Requires supporting ruby files with custom matchers and macros, etc, in spec/support/ and its subdirectories.
+Dir[File.dirname(__FILE__) + '/support/**/*.rb'].each { |file| require file }
 
 WebMock.disable_net_connect!(allow_localhost: true)
 
@@ -21,6 +26,10 @@ VCR.configure do |config|
   config.hook_into :webmock
   config.configure_rspec_metadata!
   config.ignore_localhost = true
+  config.filter_sensitive_data('<LOQATE_API_KEY>') do
+    api_key_file_path = File.dirname(__FILE__) + '/../.api_key'
+    File.read(api_key_file_path).strip
+  end
 
   # Allow continue re-recording with flag VCR=all
   record_mode = ENV['VCR'] ? ENV['VCR'].to_sym : :none
