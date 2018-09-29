@@ -12,3 +12,5 @@ if ! which overcommit >/dev/null; then
 fi
 
 overcommit --install
+
+touch ../.api_key
