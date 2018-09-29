@@ -1,0 +1,16 @@
+AllCops:
+  DisplayCopNames: true
+
+# ---------------------- Metrics ----------------------
+
+Metrics/BlockLength:
+  Exclude:
+    - loqate.gemspec
+
+Metrics/LineLength:
+  Max: 120
+
+# ----------------------- Style -----------------------
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
