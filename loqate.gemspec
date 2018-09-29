@@ -26,6 +26,11 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'bundler', '~> 1.16'
   spec.add_development_dependency 'bundler-audit', '~> 0.6'
+  spec.add_development_dependency 'guard', '~> 2.14'
+  spec.add_development_dependency 'guard-bundler', '~> 2.1'
+  spec.add_development_dependency 'guard-bundler-audit', '~> 0.1'
+  spec.add_development_dependency 'guard-rspec', '~> 4.7'
+  spec.add_development_dependency 'guard-rubocop', '~> 1.2'
   spec.add_development_dependency 'overcommit', '~> 0.46'
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
