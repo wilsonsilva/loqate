@@ -109,6 +109,7 @@ DEPENDENCIES
   guard-rubocop (~> 1.2)
   loqate!
   overcommit (~> 0.46)
+  pry (~> 0.11)
   rake (~> 10.0)
   rspec (~> 3.0)
   rubocop (~> 0.59)
