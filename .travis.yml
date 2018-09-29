@@ -11,3 +11,4 @@ before_install: gem install bundler -v 1.16.5
 script:
   - bundle exec rspec
   - bundle exec rubocop
+  - bundle exec rake yard:junk
