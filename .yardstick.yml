@@ -1,10 +1,10 @@
 threshold: 100
 rules:
   ApiTag::Presence:
-    enabled: true
+    enabled: false
     exclude: []
   ApiTag::Inclusion:
-    enabled: true
+    enabled: false
     exclude: []
   ApiTag::ProtectedMethod:
     enabled: true
@@ -14,18 +14,93 @@ rules:
     exclude: []
   ExampleTag:
     enabled: true
-    exclude: []
+    exclude:
+      - Loqate::Address#==
+      - Loqate::Address#attributes
+      - Loqate::Address#id
+      - Loqate::Address#initialize
+      - Loqate::Address#type
+      - Loqate::Address#text
+      - Loqate::Address#highlight
+      - Loqate::Address#description
+      - Loqate::AddressGateway#initialize
+      - Loqate::APIResult#errors?
+      - Loqate::APIResult#items
+      - Loqate::APIResult#initialize
+      - Loqate::Configuration#api_key
+      - Loqate::Configuration#host
+      - Loqate::Configuration#language
+      - Loqate::Configuration#initialize
+      - Loqate::DetailedAddress#initialize
+      - Loqate::DetailedAddress#==
+      - Loqate::Error#id
+      - Loqate::Error#description
+      - Loqate::Error#cause
+      - Loqate::Error#resolution
+      - Loqate::Error#initialize
+      - Loqate::Gateway#config
+      - Loqate::Gateway#initialize
+      - Loqate::Gateway#address
+      - Loqate::Result::Success#success?
+      - Loqate::Result::Success#failure?
+      - Loqate::Result::Failure#success?
+      - Loqate::Result::Failure#failure?
+      - Loqate::Result#code
+      - Loqate::Result#value
   ReturnTag:
     enabled: true
-    exclude: []
+    exclude:
+      - Loqate::Address#==
+      - Loqate::Address#attributes
+      - Loqate::Address#id
+      - Loqate::Address#type
+      - Loqate::Address#text
+      - Loqate::Address#highlight
+      - Loqate::Address#description
+      - Loqate::AddressGateway#client
+      - Loqate::AddressGateway#mapper
+      - Loqate::AddressGateway#error_mapper
+      - Loqate::AddressGateway#build_errors_from
+      - Loqate::AddressGateway#build_address_from
+      - Loqate::AddressGateway#build_detailed_addresses_from
+      - Loqate::Client#configuration
+      - Loqate::Client#authenticate_params
+      - Loqate::Client#format_params
+      - Loqate::DetailedAddress#==
+      - Loqate::Util.camelize
+      - Loqate::Util#camelize
+      - Loqate::Util.underscore
+      - Loqate::Util#underscore
+      - Loqate::Error#attributes
+      - Loqate::Gateway#client
   Summary::Presence:
     enabled: true
-    exclude: []
+    exclude:
+      - Loqate::Address#==
+      - Loqate::Address#attributes
+      - Loqate::Address#id
+      - Loqate::Address#type
+      - Loqate::Address#text
+      - Loqate::Address#highlight
+      - Loqate::Address#description
+      - Loqate::AddressGateway#client
+      - Loqate::AddressGateway#mapper
+      - Loqate::AddressGateway#error_mapper
+      - Loqate::AddressGateway#build_errors_from
+      - Loqate::AddressGateway#build_address_from
+      - Loqate::AddressGateway#build_detailed_addresses_from
+      - Loqate::Client#configuration
+      - Loqate::Client#authenticate_params
+      - Loqate::Client#format_params
+      - Loqate::DetailedAddress#initialize
+      - Loqate::DetailedAddress#==
+      - Loqate::Error#attributes
+      - Loqate::Gateway#client
   Summary::Length:
     enabled: false
   Summary::Delimiter:
     enabled: false
     exclude: []
   Summary::SingleLine:
-    enabled: true
+    enabled: false
     exclude: []

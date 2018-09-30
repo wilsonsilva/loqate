@@ -1,0 +1,123 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.addressy.com/Capture/Interactive/Find/v1.00/json3.ws?Countries=GB&Key=<LOQATE_API_KEY>&Text=Scrubs%20Lane
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Connection:
+      - close
+      Host:
+      - api.addressy.com
+      User-Agent:
+      - http.rb/3.3.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Sun, 30 Sep 2018 05:43:19 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '292'
+      Vary:
+      - Accept-Encoding
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Expires:
+      - "-1"
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Content-Type, pca-source
+      Records:
+      - '2'
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Xss-Protection:
+      - '1'
+      X-Robots-Tag:
+      - noindex
+      Via:
+      - 1.1 google
+      Set-Cookie:
+      - GCLB=CJHN3rumyI7SIw; path=/; HttpOnly; expires=Sun, 30-Sep-2018 05:44:19 GMT
+      Alt-Svc:
+      - clear
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"Items":[{"Id":"GB|RM|ENG|LONDON---LANE-SCRUBS","Type":"Street","Text":"Scrubs
+        Lane","Highlight":"0-6,7-11","Description":"London - 209 Addresses"},{"Id":"GB|RM|B|27570297|A1","Type":"Address","Text":"Scrubs,
+        21 Runsell Lane","Highlight":"0-6","Description":"Danbury, Chelmsford, CM3
+        4NZ"}]}'
+    http_version:
+  recorded_at: Sun, 30 Sep 2018 05:43:19 GMT
+- request:
+    method: get
+    uri: https://api.addressy.com/Capture/Interactive/Find/v1.00/json3.ws?Countries=GB&Key=<LOQATE_API_KEY>&Text=Scrubs%20Lane
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Connection:
+      - close
+      Host:
+      - api.addressy.com
+      User-Agent:
+      - http.rb/3.3.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Sun, 30 Sep 2018 05:50:58 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '221'
+      Vary:
+      - Accept-Encoding
+      Cache-Control:
+      - private
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Content-Type, pca-source
+      Records:
+      - '1'
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Xss-Protection:
+      - '1'
+      X-Robots-Tag:
+      - noindex
+      Via:
+      - 1.1 google
+      Set-Cookie:
+      - GCLB=CLe8l-6D7MSxrgE; path=/; HttpOnly; expires=Sun, 30-Sep-2018 05:51:58
+        GMT
+      Alt-Svc:
+      - clear
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"Items":[{"Error":"2","Description":"Unknown key","Cause":"The key
+        you are using to access the service was not found.","Resolution":"Please check
+        that the key is correct. It should be in the form AA11-AA11-AA11-AA11."}]}'
+    http_version:
+  recorded_at: Sun, 30 Sep 2018 05:50:58 GMT
+recorded_with: VCR 4.0.0

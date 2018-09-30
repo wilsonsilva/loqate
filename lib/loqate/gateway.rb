@@ -1,3 +1,5 @@
+require 'loqate/address_gateway'
+
 module Loqate
   # Acts as a single point of entry for a defined group of API's.
   class Gateway
@@ -19,6 +21,14 @@ module Loqate
     def initialize(options)
       @config = Configuration.new(options)
       @client = Client.new(config)
+    end
+
+    # Gateway to the Address APIs.
+    #
+    # @return [AddressGateway] An instance of an address gateway.
+    #
+    def address
+      @address ||= AddressGateway.new(client)
     end
 
     private

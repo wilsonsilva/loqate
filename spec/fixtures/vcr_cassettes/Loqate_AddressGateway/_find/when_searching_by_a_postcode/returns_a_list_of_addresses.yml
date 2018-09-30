@@ -1,0 +1,120 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.addressy.com/Capture/Interactive/Find/v1.00/json3.ws?Countries=GB&Key=<LOQATE_API_KEY>&Text=NW10%206RB
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Connection:
+      - close
+      Host:
+      - api.addressy.com
+      User-Agent:
+      - http.rb/3.3.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Sun, 30 Sep 2018 05:48:11 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '148'
+      Vary:
+      - Accept-Encoding
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Expires:
+      - "-1"
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Content-Type, pca-source
+      Records:
+      - '1'
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Xss-Protection:
+      - '1'
+      X-Robots-Tag:
+      - noindex
+      Via:
+      - 1.1 google
+      Set-Cookie:
+      - GCLB=COHxwqTuh62KYw; path=/; HttpOnly; expires=Sun, 30-Sep-2018 05:49:11 GMT
+      Alt-Svc:
+      - clear
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"Items":[{"Id":"GB|RM|ENG|6RB-NW10","Type":"Postcode","Text":"NW10
+        6RB","Highlight":"0-4,5-8","Description":"Scrubs Lane, London - 17 Addresses"}]}'
+    http_version:
+  recorded_at: Sun, 30 Sep 2018 05:48:11 GMT
+- request:
+    method: get
+    uri: https://api.addressy.com/Capture/Interactive/Find/v1.00/json3.ws?Countries=GB&Key=<LOQATE_API_KEY>&Text=NW10%206RB
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Connection:
+      - close
+      Host:
+      - api.addressy.com
+      User-Agent:
+      - http.rb/3.3.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Sun, 30 Sep 2018 05:50:58 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '221'
+      Vary:
+      - Accept-Encoding
+      Cache-Control:
+      - private
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Content-Type, pca-source
+      Records:
+      - '1'
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Xss-Protection:
+      - '1'
+      X-Robots-Tag:
+      - noindex
+      Via:
+      - 1.1 google
+      Set-Cookie:
+      - GCLB=CLG_pL_gj5boMA; path=/; HttpOnly; expires=Sun, 30-Sep-2018 05:51:58 GMT
+      Alt-Svc:
+      - clear
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"Items":[{"Error":"2","Description":"Unknown key","Cause":"The key
+        you are using to access the service was not found.","Resolution":"Please check
+        that the key is correct. It should be in the form AA11-AA11-AA11-AA11."}]}'
+    http_version:
+  recorded_at: Sun, 30 Sep 2018 05:50:58 GMT
+recorded_with: VCR 4.0.0
