@@ -2,17 +2,18 @@
 
 ## Core
 
-- [ ] HTTP Client
-- [ ] Core Client
+- [x] HTTP Client
+- [x] Core Client
 - [ ] Logging
-- [ ] Domain error handling
-- [ ] Configuration
-- [ ] Versioning
+- [x] Domain error handling
+- [x] Configuration
+- [ ] Validate request parameters
+- [ ] API/Service versioning
 - [ ] Integration with RSpec
 
 ## APIs
 
-- [ ] Address Verification
+- [x] Address Verification
 - [ ] Geocode
 - [ ] Data Cleanse
 - [ ] Email Verification
@@ -26,7 +27,7 @@
 - [ ] File Renderer
 - [ ] HTML Table
 - [ ] Image Renderer
-- [ ] JSON
+- [x] JSON
 - [ ] JSON (with extra)
 - [ ] JSONP (JavaScript)
 - [ ] PDF
