@@ -7,9 +7,7 @@
 [![Security](https://hakiri.io/github/wilsonsilva/loqate/master.svg)](https://hakiri.io/github/wilsonsilva/loqate/master)
 [![Inline docs](http://inch-ci.org/github/wilsonsilva/loqate.svg?branch=master)](http://inch-ci.org/github/wilsonsilva/loqate)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/loqate`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Client to address verification, postcode lookup, & data quality services from Loqate.
 
 ## Installation
 
@@ -29,12 +27,67 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Getting started
+
+Loqate provides multiple APIs. And each API provides several services. This gem exposes these APIs through
+an API gateway.
+
+To get started, initialize an API gateway with [your API key](https://account.loqate.com/account#/):
+
+```ruby
+gateway = Loqate::Gateway.new(api_key: '<YOUR_API_KEY>')
+```
+
+Every call to a gateway method will return a `Loqate::Result` object, which will respond to `success?` and `failure?`.
+
+### Address API
+
+The Address API consists of two main API requests:
+[Find](https://www.loqate.com/resources/support/apis/Capture/Interactive/Find/1/) request is used to narrow down a
+possible list of addresses;
+and a [Retrieve](https://www.loqate.com/resources/support/apis/Capture/Interactive/Retrieve/1/) request is used to
+retrieve a fully formatted address.
+
+A typical address search is made up of a series of `find` requests, followed by a `retrieve` based on the user
+selection.
+
+#### Finding addresses
+
+```ruby
+result = gateway.address.find(text: 'EC1Y 8AF', country: 'GB', limit: 5)
+
+result.success? # => true
+result.failure? # => false
+
+addresses = result.value
+addresses.first.id # => 'GB|RM|B|8144611'
+```
+
+### Retrieving the details of an address
+
+```ruby
+result = gateway.address.retrieve(id: 'GB|RM|B|8144611')
+
+result.success? # => true
+result.failure? # => false
+
+addresses = result.value
+address = addresses.first
+
+address.city        # 'London' 
+address.line1       # '148 Warner Road'
+address.postal_code # 'E17 7EA'
+```
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive
-prompt that will allow you to experiment. The health and maintainability of the codebase is ensured through a set of
+After checking out the repo, run `bin/setup` to install dependencies, configure git hooks and create support files.
+
+You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+
+Then add your Loqate API key to `.api_key`. It will be used by RSpec and VCR, but not stored in the codebase. 
+
+The health and maintainability of the codebase is ensured through a set of
 Rake tasks to test, lint and audit the gem for security vulnerabilities and documentation:
 
 ```
@@ -51,4 +104,4 @@ rake yardstick_measure     # Measure docs in lib/**/*.rb with yardstick
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/loqate.
+Bug reports and pull requests are welcome on GitHub at https://github.com/wilsonsilva/loqate.
