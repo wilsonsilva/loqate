@@ -63,7 +63,7 @@ addresses = result.value
 addresses.first.id # => 'GB|RM|B|8144611'
 ```
 
-### Retrieving the details of an address
+#### Retrieving the details of an address
 
 ```ruby
 result = gateway.address.retrieve(id: 'GB|RM|B|8144611')
