@@ -7,6 +7,7 @@
 - [ ] Logging
 - [x] Domain error handling
 - [x] Configuration
+- [ ] Unwrap request results
 - [ ] Validate request parameters
 - [ ] API/Service versioning
 - [ ] Integration with RSpec
