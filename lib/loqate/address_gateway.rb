@@ -67,12 +67,12 @@ module Loqate
     # @example Retrieving the details of an address
     #   detailed_address = gateway.retrieve(id: 'GB|RM|ENG|6RB-NW10')
     #
-    # @return [Array<DetailedAddress>] A list of detailed addresses
+    # @return [DetailedAddress] A detailed address
     #
     def retrieve(options)
       response = client.get(RETRIEVE_ENDPOINT, options)
 
-      response.errors? && build_errors_from(response.items) || build_detailed_addresses_from(response.items)
+      response.errors? && build_errors_from(response.items) || build_detailed_address_from(response.items.first)
     end
 
     private
@@ -93,8 +93,8 @@ module Loqate
     end
 
     # @api private
-    def build_detailed_addresses_from(items)
-      detailed_address = mapper.map(items, DetailedAddress)
+    def build_detailed_address_from(item)
+      detailed_address = mapper.map_one(item, DetailedAddress)
       Success(detailed_address)
     end
   end

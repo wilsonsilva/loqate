@@ -103,7 +103,7 @@ RSpec.describe Loqate::AddressGateway, vcr: true do
     context 'when there is no error' do
       it 'returns detailed addresses' do
         result = address_gateway.retrieve(id: 'GB|RM|B|52509479')
-        expect(result.value).to contain_exactly(
+        expect(result.value).to eq(
           Loqate::DetailedAddress.new(
             id: 'GB|RM|B|52509479',
             domestic_id: '52509479',

@@ -71,9 +71,7 @@ result = gateway.address.retrieve(id: 'GB|RM|B|8144611')
 result.success? # => true
 result.failure? # => false
 
-addresses = result.value
-address = addresses.first
-
+address = result.value
 address.city        # 'London' 
 address.line1       # '148 Warner Road'
 address.postal_code # 'E17 7EA'
