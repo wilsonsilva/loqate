@@ -11,3 +11,4 @@
 # rspec failure tracking
 .rspec_status
 .api_key
+/Gemfile.lock
