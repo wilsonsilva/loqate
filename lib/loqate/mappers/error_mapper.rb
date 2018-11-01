@@ -14,12 +14,18 @@ module Loqate
       # @return [Array<Error>] An array of errors
       #
       def map(items)
-        items.map do |item|
-          attributes = item.transform_keys { |attribute| Util.underscore(attribute) }
-          attributes[:id] = attributes.delete(:error).to_i
+        items.map { |item| map_one(item) }
+      end
 
-          Loqate::Error.new(attributes)
-        end
+      # Creates an error from an API response
+      #
+      # @return [Error] A concrete instance of Error
+      #
+      def map_one(item)
+        attributes = item.transform_keys { |attribute| Util.underscore(attribute) }
+        attributes[:id] = attributes.delete(:error).to_i
+
+        Loqate::Error.new(attributes)
       end
     end
   end

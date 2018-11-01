@@ -26,7 +26,7 @@ RSpec.describe Loqate::AddressGateway, vcr: true do
 
       it 'returns a list of errors' do
         result = address_gateway.find(text: nil)
-        expect(result.value).to contain_exactly(error)
+        expect(result.value).to eq(error)
       end
     end
 
@@ -96,7 +96,7 @@ RSpec.describe Loqate::AddressGateway, vcr: true do
 
       it 'returns a list of errors' do
         result = address_gateway.retrieve(id: 'GB|RM|ENG|6RB-NW10')
-        expect(result.value).to contain_exactly(error)
+        expect(result.value).to eq(error)
       end
     end
 
