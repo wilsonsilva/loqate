@@ -51,7 +51,7 @@ module Loqate
     def find(options)
       response = client.get(FIND_ENDPOINT, options)
 
-      response.errors? && build_errors_from(response.items) || build_address_from(response.items)
+      response.errors? && build_errors_from(response.items) || build_addresses_from(response.items)
     end
 
     # Returns the full address details based on the id.
@@ -87,7 +87,7 @@ module Loqate
     end
 
     # @api private
-    def build_address_from(items)
+    def build_addresses_from(items)
       address = mapper.map(items, Address)
       Success(address)
     end

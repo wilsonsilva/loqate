@@ -61,7 +61,7 @@ rules:
       - Loqate::AddressGateway#mapper
       - Loqate::AddressGateway#error_mapper
       - Loqate::AddressGateway#build_errors_from
-      - Loqate::AddressGateway#build_address_from
+      - Loqate::AddressGateway#build_addresses_from
       - Loqate::AddressGateway#build_detailed_address_from
       - Loqate::Client#configuration
       - Loqate::Client#authenticate_params
@@ -87,7 +87,7 @@ rules:
       - Loqate::AddressGateway#mapper
       - Loqate::AddressGateway#error_mapper
       - Loqate::AddressGateway#build_errors_from
-      - Loqate::AddressGateway#build_address_from
+      - Loqate::AddressGateway#build_addresses_from
       - Loqate::AddressGateway#build_detailed_address_from
       - Loqate::Client#configuration
       - Loqate::Client#authenticate_params
