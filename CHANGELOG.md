@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Changed
+- `address.retrieve` returns a single error, not an array with a single item
 - `address.retrieve` returns a single address, not an array of addresses
 
 ## [0.2.0] - 2018-10-31
