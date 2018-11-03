@@ -46,7 +46,7 @@ module Loqate
     # @example Retrieving an address in the UK
     #   address = address_gateway.find(countries: 'GB', text: 'Scrubs Lane')
     #
-    # @return [Array<Address>] A list of addresses
+    # @return [Result] A result wrapping a list of addresses
     #
     def find(options)
       response = client.get(FIND_ENDPOINT, options)
@@ -58,16 +58,16 @@ module Loqate
     #
     # @param [Hash] options The options to retrieve the address.
     # @option options [String] :id The Id from a Find method to retrieve the details for.
-    # @option options [String] :field_1_format a.
-    # @option options [String] :field_2_format b.
-    # @option options [String] :field_3_format c.
-    # @option options [String] :field_4_format d.
-    # @option options [String] :field_5_format e.
+    # @option options [String] :field_1_format Format of a custom address field.
+    # @option options [String] :field_2_format Format of a custom address field.
+    # @option options [String] :field_3_format Format of a custom address field.
+    # @option options [String] :field_4_format Format of a custom address field.
+    # @option options [String] :field_5_format Format of a custom address field.
     #
     # @example Retrieving the details of an address
     #   detailed_address = gateway.retrieve(id: 'GB|RM|ENG|6RB-NW10')
     #
-    # @return [DetailedAddress] A detailed address
+    # @return [Result] A result wrapping a detailed address
     #
     def retrieve(options)
       response = client.get(RETRIEVE_ENDPOINT, options)
