@@ -63,6 +63,8 @@ module Loqate
       def failure?
         true
       end
+
+      alias error value
     end
 
     # Utility methods to conveniently return +Success+ or +Failure+ results.
