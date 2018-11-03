@@ -31,7 +31,7 @@ module Loqate
     class Success < Result
       # Always true
       #
-      # @return [Boolean]
+      # @return [TrueClass]
       #
       def success?
         true
@@ -39,7 +39,7 @@ module Loqate
 
       # Always false
       #
-      # @return [Boolean]
+      # @return [FalseClass]
       #
       def failure?
         false
@@ -50,7 +50,7 @@ module Loqate
     class Failure < Result
       # Always false
       #
-      # @return [Boolean]
+      # @return [FalseClass]
       #
       def success?
         false
@@ -58,7 +58,7 @@ module Loqate
 
       # Always true
       #
-      # @return [Boolean]
+      # @return [TrueClass]
       #
       def failure?
         true
