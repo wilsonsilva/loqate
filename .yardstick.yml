@@ -47,6 +47,7 @@ rules:
       - Loqate::Result::Failure#failure?
       - Loqate::Result#code
       - Loqate::Result#value
+      - Loqate::Result::Failure#error
   ReturnTag:
     enabled: true
     exclude:
@@ -73,6 +74,7 @@ rules:
       - Loqate::Util#underscore
       - Loqate::Error#attributes
       - Loqate::Gateway#client
+      - Loqate::Result::Failure#error
   Summary::Presence:
     enabled: true
     exclude:
@@ -96,6 +98,7 @@ rules:
       - Loqate::DetailedAddress#==
       - Loqate::Error#attributes
       - Loqate::Gateway#client
+      - Loqate::Result::Failure#error
   Summary::Length:
     enabled: false
   Summary::Delimiter:

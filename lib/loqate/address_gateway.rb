@@ -75,6 +75,52 @@ module Loqate
       response.errors? && build_error_from(response.items.first) || build_detailed_address_from(response.items.first)
     end
 
+    # Find addresses and places.
+    #
+    # @param [Hash] options The options to find an address or a list of addresses.
+    # @option options [String] :text The search text to find. Ideally a postcode or the start of the address.
+    # @option options [String] countries A comma separated list of ISO 2 or 3 character country codes to limit
+    #   the search within.
+    # @option options [String] origin A starting location for the search. This can be the name or ISO 2 or 3 character
+    #   code of a country, WGS84 coordinates (comma separated) or IP address to search from.
+    # @option options [String] container A container for the search. This should only be another Id previously returned
+    #   from this service when the Type of the result was not 'Address'.
+    # @option options [Integer] limit The maximum number of results to return.
+    # @option options [String] language The preferred language for results. This should be a 2 or 4 character language
+    #   code e.g. (en, fr, en-gb, en-us etc).
+    #
+    # @example Retrieving addresses in the UK
+    #   addresses = address_gateway.find!(countries: 'GB', text: 'Scrubs Lane')
+    #
+    # @raise [Error] If the result is not a success
+    #
+    # @return [Array<Address>] A list of addresses
+    #
+    def find!(options)
+      unwrap_result_or_raise { find(options) }
+    end
+
+    # Returns the full address details based on the id.
+    #
+    # @param [Hash] options The options to retrieve the address.
+    # @option options [String] :id The Id from a Find method to retrieve the details for.
+    # @option options [String] :field_1_format Format of a custom address field.
+    # @option options [String] :field_2_format Format of a custom address field.
+    # @option options [String] :field_3_format Format of a custom address field.
+    # @option options [String] :field_4_format Format of a custom address field.
+    # @option options [String] :field_5_format Format of a custom address field.
+    #
+    # @example Retrieving the details of an address
+    #   detailed_address = gateway.retrieve!(id: 'GB|RM|ENG|6RB-NW10')
+    #
+    # @raise [Error] If the result is not a success
+    #
+    # @return [DetailedAddress] A detailed address
+    #
+    def retrieve!(options)
+      unwrap_result_or_raise { retrieve(options) }
+    end
+
     private
 
     # @api private

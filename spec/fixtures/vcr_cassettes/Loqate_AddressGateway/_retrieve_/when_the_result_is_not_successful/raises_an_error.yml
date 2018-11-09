@@ -1,0 +1,118 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.addressy.com/Capture/Interactive/Retrieve/v1.00/json3.ws?Countries=GB&Key=<LOQATE_API_KEY>&Texto=NW10%206RB
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Connection:
+      - close
+      Host:
+      - api.addressy.com
+      User-Agent:
+      - http.rb/3.3.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Fri, 09 Nov 2018 12:28:18 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '194'
+      Vary:
+      - Accept-Encoding
+      Cache-Control:
+      - private
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Content-Type, pca-source
+      Records:
+      - '1'
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Xss-Protection:
+      - '1'
+      X-Robots-Tag:
+      - noindex
+      Via:
+      - 1.1 google
+      Set-Cookie:
+      - GCLB=CPK0soSg9OKVIg; path=/; HttpOnly; expires=Fri, 09-Nov-2018 12:29:18 GMT
+      Alt-Svc:
+      - clear
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"Items":[{"Error":"1001","Description":"Id Invalid","Cause":"The Id
+        parameter supplied was invalid.","Resolution":"You should only pass in IDs
+        that have been returned from the Find service."}]}'
+    http_version: 
+  recorded_at: Fri, 09 Nov 2018 12:28:18 GMT
+- request:
+    method: get
+    uri: https://api.addressy.com/Capture/Interactive/Retrieve/v1.00/json3.ws?Id&Key=<LOQATE_API_KEY>
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Connection:
+      - close
+      Host:
+      - api.addressy.com
+      User-Agent:
+      - http.rb/3.3.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Fri, 09 Nov 2018 12:29:17 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '194'
+      Vary:
+      - Accept-Encoding
+      Cache-Control:
+      - private
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Content-Type, pca-source
+      Records:
+      - '1'
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Xss-Protection:
+      - '1'
+      X-Robots-Tag:
+      - noindex
+      Via:
+      - 1.1 google
+      Set-Cookie:
+      - GCLB=CKaF9a6eu5HjnQE; path=/; HttpOnly; expires=Fri, 09-Nov-2018 12:30:17
+        GMT
+      Alt-Svc:
+      - clear
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"Items":[{"Error":"1001","Description":"Id Invalid","Cause":"The Id
+        parameter supplied was invalid.","Resolution":"You should only pass in IDs
+        that have been returned from the Find service."}]}'
+    http_version: 
+  recorded_at: Fri, 09 Nov 2018 12:29:17 GMT
+recorded_with: VCR 4.0.0

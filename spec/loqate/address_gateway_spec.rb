@@ -114,4 +114,55 @@ RSpec.describe Loqate::AddressGateway, vcr: true do
       end
     end
   end
+
+  describe '#find!' do
+    context 'when the result is successful' do
+      it 'returns the unwrapped result' do
+        address = address_gateway.find!(countries: 'GB', text: 'NW10 6RB')
+
+        expect(address).to contain_exactly(
+          Loqate::Address.new(
+            description: 'Scrubs Lane, London - 18 Addresses',
+            highlight: '0-4,5-8',
+            id: 'GB|RM|ENG|6RB-NW10',
+            text: 'NW10 6RB',
+            type: 'Postcode'
+          )
+        )
+      end
+    end
+
+    context 'when the result is not successful' do
+      it 'raises an error' do
+        expect do
+          address_gateway.find!(countries: 'GB', texto: 'NW10 6RB')
+        end.to raise_error(Loqate::Error, 'Text or Container Required')
+      end
+    end
+  end
+
+  describe '#retrieve!' do
+    context 'when the result is successful' do
+      it 'returns the unwrapped result' do
+        address = address_gateway.retrieve!(id: 'GB|RM|B|52509479')
+
+        expect(address).to eq(
+          Loqate::DetailedAddress.new(
+            id: 'GB|RM|B|52509479',
+            domestic_id: '52509479',
+            language: 'ENG',
+            language_alternatives: 'ENG'
+          )
+        )
+      end
+    end
+
+    context 'when the result is not successful' do
+      it 'raises an error' do
+        expect do
+          address_gateway.retrieve!(id: nil)
+        end.to raise_error(Loqate::Error, 'Id Invalid')
+      end
+    end
+  end
 end

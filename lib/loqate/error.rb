@@ -1,6 +1,6 @@
 module Loqate
   # Generic error returned from an API call
-  class Error
+  class Error < StandardError
     # Unique identifier for the error
     #
     # @return [Integer]
@@ -33,6 +33,8 @@ module Loqate
     # @param [String] resolution How to solve the error
     #
     def initialize(id:, description:, cause:, resolution:)
+      super(description)
+
       @id = id
       @cause = cause
       @resolution = resolution

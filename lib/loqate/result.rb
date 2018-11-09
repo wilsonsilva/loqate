@@ -99,6 +99,43 @@ module Loqate
       def Failure(value, code: nil)
         Failure.new(value: value, code: code)
       end
+
+      # Unwraps a Result object. Returns the unwrapped value if the result is successful or raise
+      # an exception otherwise.
+      #
+      # @example When the given block returns a success
+      #   class Action
+      #     include Loqate::Result::Mixin
+      #
+      #     def call
+      #       Success('the value')
+      #     end
+      #   end
+      #
+      #   operation.unwrap_result_or_raise { call } # => 'the value'
+      #
+      # @example When the given block returns a failure
+      #   class Action
+      #     include Loqate::Result::Mixin
+      #
+      #     def call
+      #       Failure(StandardError.new)
+      #     end
+      #   end
+      #
+      #   operation.unwrap_result_or_raise { call } # => raises StandardError
+      #
+      # @raise [Object] If the result is not a success.
+      #
+      # @return [Object] The unwrapped object.
+      #
+      def unwrap_result_or_raise
+        result = yield
+
+        raise result.error if result.failure?
+
+        result.value
+      end
     end
   end
 end
