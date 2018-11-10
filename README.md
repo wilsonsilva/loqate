@@ -38,7 +38,7 @@ To get started, initialize an API gateway with [your API key](https://account.lo
 gateway = Loqate::Gateway.new(api_key: '<YOUR_API_KEY>')
 ```
 
-### Bang Methods
+### Bang methods
 
 Most methods have a bang and a non-bang version (e.g. `gateway.address.find` and `gateway.address.find!`).
 The non-bang version will either return a `Loqate::Success` or an `Loqate::Failure`. The bang version will
