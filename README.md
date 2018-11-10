@@ -131,3 +131,7 @@ rake yardstick_measure     # Measure docs in lib/**/*.rb with yardstick
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/wilsonsilva/loqate.
+
+## License
+
+See [LICENSE](https://github.com/wilsonsilva/loqate/blob/master/LICENSE).
