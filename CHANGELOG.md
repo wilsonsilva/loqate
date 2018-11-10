@@ -4,10 +4,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.3.0] - 2018-11-10
 ### Changed
-- `address.retrieve` returns a single error, not an array with a single item
+- `address.retrieve` and `address.find` return a single error, not an array with a single item
 - `address.retrieve` returns a single address, not an array of addresses
+- `Loqate::Error` inherits from `StandardError` so that it can be raised as an exception
+- Improved the documentation of `Success` and `Failure`
+
+## Added
+- `find!` to find an address or raise an exception
+- `retrieve!` to retrieve the details of an address or raise an exception
+- Aliased `Failure#value` to `Failure#error`
+
+## Fixed
+- Fixed the documentation of `AddressGateway`
 
 ## [0.2.0] - 2018-10-31
 ### Added
@@ -25,5 +35,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Initial core functionality
 - Codebase maintenance tools
 
-[Unreleased]: https://github.com/wilsonsilva/loqate/compare/v0.2.0...HEAD
+[0.3.0]: https://github.com/wilsonsilva/loqate/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/wilsonsilva/loqate/compare/v0.1.0...v0.2.0
