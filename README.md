@@ -9,6 +9,20 @@
 
 Client to address verification, postcode lookup, & data quality services from Loqate.
 
+## Table of contents
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Getting started](#getting-started)
+  - [Bang methods](#bang-methods)
+    - [Example of using non-bang method](#example-of-using-non-bang-method)
+    - [Example of using bang method](#example-of-using-bang-method)
+  - [Address API](#address-api)
+    - [Finding addresses](#finding-addresses)
+    - [Retrieving the details of an address](#retrieving-the-details-of-an-address)
+- [Development](#development)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Installation
 
 Add this line to your application's Gemfile:
