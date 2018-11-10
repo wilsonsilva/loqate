@@ -38,7 +38,41 @@ To get started, initialize an API gateway with [your API key](https://account.lo
 gateway = Loqate::Gateway.new(api_key: '<YOUR_API_KEY>')
 ```
 
-Every call to a gateway method will return a `Loqate::Result` object, which will respond to `success?` and `failure?`.
+### Bang Methods
+
+Most methods have a bang and a non-bang version (e.g. `gateway.address.find` and `gateway.address.find!`).
+The non-bang version will either return a `Loqate::Success` or an `Loqate::Failure`. The bang version will
+either return the desired resource, or it will raise an exception.
+
+#### Example of using non-bang method
+
+```ruby
+result = gateway.address.find(text: 'EC1Y 8AF', country: 'GB', limit: 5)
+
+if result.success?
+  addresses = result.value
+  addresses.first.id # => 'GB|RM|B|8144611'
+else
+  error = result.error
+  puts "Error retrieving the address: #{error.description}. Resolution: #{error.resolution}"
+end
+
+result.failure? # => false
+```
+
+#### Example of using bang method
+
+```ruby
+begin
+  addresses = gateway.address.find!(text: 'EC1Y 8AF', country: 'GB', limit: 5)
+  addresses.first.id # => 'GB|RM|B|8144611'
+rescue Loqate::Error => e
+  puts "Error retrieving the address: #{e.description}. Resolution: #{e.resolution}"
+end
+```
+
+It is recommended that you use the bang methods when you assume that the data is valid and do not expect validations
+to fail. Otherwise, use the non-bang methods.
 
 ### Address API
 
@@ -56,9 +90,6 @@ selection.
 ```ruby
 result = gateway.address.find(text: 'EC1Y 8AF', country: 'GB', limit: 5)
 
-result.success? # => true
-result.failure? # => false
-
 addresses = result.value
 addresses.first.id # => 'GB|RM|B|8144611'
 ```
@@ -68,13 +99,10 @@ addresses.first.id # => 'GB|RM|B|8144611'
 ```ruby
 result = gateway.address.retrieve(id: 'GB|RM|B|8144611')
 
-result.success? # => true
-result.failure? # => false
-
 address = result.value
-address.city        # 'London' 
-address.line1       # '148 Warner Road'
-address.postal_code # 'E17 7EA'
+address.city           # 'London' 
+address.line1          # '148 Warner Road'
+address.postal_code    # 'E17 7EA'
 ```
 
 ## Development
