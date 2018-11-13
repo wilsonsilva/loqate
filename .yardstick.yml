@@ -67,6 +67,7 @@ rules:
       - Loqate::Client#configuration
       - Loqate::Client#authenticate_params
       - Loqate::Client#format_params
+      - Loqate::Client#headers
       - Loqate::DetailedAddress#==
       - Loqate::Util.camelize
       - Loqate::Util#camelize
@@ -94,6 +95,7 @@ rules:
       - Loqate::Client#configuration
       - Loqate::Client#authenticate_params
       - Loqate::Client#format_params
+      - Loqate::Client#headers
       - Loqate::DetailedAddress#initialize
       - Loqate::DetailedAddress#==
       - Loqate::Error#attributes

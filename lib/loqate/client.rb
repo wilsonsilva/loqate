@@ -36,7 +36,7 @@ module Loqate
       authenticated_params = authenticate_params(params)
       formatted_params = format_params(authenticated_params)
 
-      response = HTTP.get(configuration.host + endpoint, params: formatted_params)
+      response = HTTP.headers(headers).get(configuration.host + endpoint, params: formatted_params)
 
       body = JSON.parse(response.body)
       APIResult.new(body.fetch('Items'))
@@ -55,6 +55,11 @@ module Loqate
     # @api private
     def format_params(params)
       params.transform_keys { |key| Util.camelize(key) }
+    end
+
+    # @api private
+    def headers
+      { accept: 'application/json' }
     end
   end
 end

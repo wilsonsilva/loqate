@@ -18,6 +18,15 @@ RSpec.describe Loqate::Client do
       expect(WebMock).to have_requested(:get, 'https://api.addressy.com/path?Key=fake&Q1=val1')
     end
 
+    it 'requests content in the JSON format' do
+      stub_request(:get, 'https://api.addressy.com/path?Key=fake').to_return(body: '{"Items": []}')
+
+      client.get('/path')
+      expect(WebMock).to have_requested(:get, 'https://api.addressy.com/path?Key=fake').with(
+        headers: { accept: 'application/json' }
+      )
+    end
+
     it 'returns a response object' do
       stub_request(:get, 'https://api.addressy.com/path?Key=fake').to_return(body: '{"Items": []}')
 
