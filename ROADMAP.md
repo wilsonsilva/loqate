@@ -18,7 +18,7 @@
 - [ ] Geocode
 - [ ] Data Cleanse
 - [ ] Email Verification
-- [ ] Phone Verification
+- [x] Phone Verification
 - [ ] Bank Verification
 
 ## Formats
