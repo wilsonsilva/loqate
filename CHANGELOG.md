@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Changed
 - Updated the gem `HTTP` to version `4.0.0`
+- Added the header `Accept: application/json` to every request
+- Simplified the Value Objects with Dry-Struct
+
+## Added
+- A License (MIT)
 
 ## [0.3.0] - 2018-11-10
 ### Changed
