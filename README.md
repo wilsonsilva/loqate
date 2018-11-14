@@ -19,6 +19,8 @@ Client to address verification, postcode lookup, & data quality services from Lo
   - [Address API](#address-api)
     - [Finding addresses](#finding-addresses)
     - [Retrieving the details of an address](#retrieving-the-details-of-an-address)
+  - [Phone API](#phone-api)
+    - [Validating a phone number](#validating-a-phone-number)
 - [Development](#development)
 - [Contributing](#contributing)
 - [License](#license)
@@ -102,21 +104,42 @@ selection.
 #### Finding addresses
 
 ```ruby
-result = gateway.address.find(text: 'EC1Y 8AF', country: 'GB', limit: 5)
+addresses = gateway.address.find!(text: 'EC1Y 8AF', country: 'GB', limit: 5)
 
-addresses = result.value
 addresses.first.id # => 'GB|RM|B|8144611'
 ```
 
 #### Retrieving the details of an address
 
 ```ruby
-result = gateway.address.retrieve(id: 'GB|RM|B|8144611')
+address = gateway.address.retrieve!(id: 'GB|RM|B|8144611')
 
-address = result.value
-address.city           # 'London' 
-address.line1          # '148 Warner Road'
-address.postal_code    # 'E17 7EA'
+address.city        # 'London' 
+address.line1       # '148 Warner Road'
+address.postal_code # 'E17 7EA'
+```
+
+### Phone API
+
+The Phone API consists of a single API request:
+[Validate](https://www.loqate.com/resources/support/apis/PhoneNumberValidation/Interactive/Validate/2.2/) which starts
+a new phone number validation request.
+
+#### Validating a phone number
+
+```ruby
+phone_validation = gateway.phone.validate!(phone: '+447440029210', country: 'GB')
+
+phone_validation.phone_number      # => '+447440029210'
+phone_validation.request_processed # => true
+phone_validation.is_valid          # => 'Yes' -> This is how Loqate defines validity
+phone_validation.valid?            # => true
+phone_validation.network_code      # => '26'
+phone_validation.network_name      # => 'Telefonica UK'
+phone_validation.network_country   # => 'GB'
+phone_validation.national_format   # => '07440 029210'
+phone_validation.country_prefix    # => 44
+phone_validation.number_type       # => 'Mobile'
 ```
 
 ## Development
