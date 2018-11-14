@@ -41,6 +41,18 @@ rules:
       - Loqate::Gateway#config
       - Loqate::Gateway#initialize
       - Loqate::Gateway#address
+      - Loqate::Gateway#phone
+      - Loqate::PhoneGateway#initialize
+      - Loqate::PhoneNumberValidation#phone_number
+      - Loqate::PhoneNumberValidation#request_processed
+      - Loqate::PhoneNumberValidation#is_valid
+      - Loqate::PhoneNumberValidation#network_code
+      - Loqate::PhoneNumberValidation#network_name
+      - Loqate::PhoneNumberValidation#network_country
+      - Loqate::PhoneNumberValidation#national_format
+      - Loqate::PhoneNumberValidation#country_prefix
+      - Loqate::PhoneNumberValidation#number_type
+      - Loqate::PhoneNumberValidation#valid?
       - Loqate::Result::Success#success?
       - Loqate::Result::Success#failure?
       - Loqate::Result::Failure#success?
@@ -75,6 +87,11 @@ rules:
       - Loqate::Util#underscore
       - Loqate::Error#attributes
       - Loqate::Gateway#client
+      - Loqate::PhoneGateway#mapper
+      - Loqate::PhoneGateway#error_mapper
+      - Loqate::PhoneGateway#client
+      - Loqate::PhoneGateway#build_error_from
+      - Loqate::PhoneGateway#build_phone_validation_from
       - Loqate::Result::Failure#error
   Summary::Presence:
     enabled: true
@@ -100,6 +117,11 @@ rules:
       - Loqate::DetailedAddress#==
       - Loqate::Error#attributes
       - Loqate::Gateway#client
+      - Loqate::PhoneGateway#mapper
+      - Loqate::PhoneGateway#error_mapper
+      - Loqate::PhoneGateway#client
+      - Loqate::PhoneGateway#build_error_from
+      - Loqate::PhoneGateway#build_phone_validation_from
       - Loqate::Result::Failure#error
   Summary::Length:
     enabled: false

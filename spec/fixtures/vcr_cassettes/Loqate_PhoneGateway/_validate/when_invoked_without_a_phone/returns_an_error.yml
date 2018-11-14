@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.addressy.com/PhoneNumberValidation/Interactive/Validate/v2.20/json3.ws?Country=GB&Key=<LOQATE_API_KEY>
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Connection:
+      - close
+      Host:
+      - api.addressy.com
+      User-Agent:
+      - http.rb/4.0.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Mon, 12 Nov 2018 21:48:41 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '176'
+      Vary:
+      - Accept-Encoding
+      Cache-Control:
+      - private
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Content-Type, pca-source
+      Records:
+      - '1'
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Xss-Protection:
+      - '1'
+      X-Robots-Tag:
+      - noindex
+      Via:
+      - 1.1 google
+      Set-Cookie:
+      - GCLB=CLPVoKD_4qne2gE; path=/; HttpOnly; expires=Mon, 12-Nov-2018 21:49:41
+        GMT
+      Alt-Svc:
+      - clear
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"Items":[{"Error":"1001","Description":"Number Required","Cause":"The
+        phone numbers is required.","Resolution":"Please ensure that you supply a
+        phone number and try again."}]}'
+    http_version: 
+  recorded_at: Mon, 12 Nov 2018 21:48:41 GMT
+recorded_with: VCR 4.0.0

@@ -1,4 +1,5 @@
 require 'loqate/address_gateway'
+require 'loqate/phone_gateway'
 
 module Loqate
   # Acts as a single point of entry for a defined group of API's.
@@ -29,6 +30,14 @@ module Loqate
     #
     def address
       @address ||= AddressGateway.new(client)
+    end
+
+    # Gateway to the Phone number API.
+    #
+    # @return [PhoneGateway] An instance of a phone gateway.
+    #
+    def phone
+      @phone ||= PhoneGateway.new(client)
     end
 
     private
