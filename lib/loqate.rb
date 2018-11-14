@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'loqate/types'
 require 'loqate/version'
 require 'loqate/gateway'
 

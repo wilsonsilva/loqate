@@ -41,24 +41,4 @@ RSpec.describe Loqate::Address do
       expect(address.description).to eq('London - 208 Addresses')
     end
   end
-
-  describe '#==' do
-    context 'when the attributes are different' do
-      it 'returns false' do
-        address1 = Loqate::Address.new(attributes)
-        address2 = Loqate::Address.new(attributes.merge(type: 'Postcode'))
-
-        expect(address1).not_to eq(address2)
-      end
-    end
-
-    context 'when the attributes are the same' do
-      it 'returns true' do
-        address1 = Loqate::Address.new(attributes)
-        address2 = Loqate::Address.new(attributes)
-
-        expect(address1).to eq(address2)
-      end
-    end
-  end
 end
