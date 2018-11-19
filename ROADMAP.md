@@ -17,7 +17,7 @@
 - [x] Address Verification
 - [ ] Geocode
 - [ ] Data Cleanse
-- [ ] Email Verification
+- [x] Email Verification
 - [x] Phone Verification
 - [ ] Bank Verification
 

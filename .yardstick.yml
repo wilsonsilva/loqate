@@ -27,12 +27,31 @@ rules:
       - Loqate::APIResult#errors?
       - Loqate::APIResult#items
       - Loqate::APIResult#initialize
+      - Loqate::BatchEmailValidation#status
+      - Loqate::BatchEmailValidation#email_address
+      - Loqate::BatchEmailValidation#account
+      - Loqate::BatchEmailValidation#domain
+      - Loqate::BatchEmailValidation#is_disposible
+      - Loqate::BatchEmailValidation#is_system_mailbox
       - Loqate::Configuration#api_key
       - Loqate::Configuration#host
       - Loqate::Configuration#language
       - Loqate::Configuration#initialize
       - Loqate::DetailedAddress#initialize
       - Loqate::DetailedAddress#==
+      - Loqate::EmailGateway#initialize
+      - Loqate::EmailValidation#response_code
+      - Loqate::EmailValidation#response_message
+      - Loqate::EmailValidation#email_address
+      - Loqate::EmailValidation#user_account
+      - Loqate::EmailValidation#domain
+      - Loqate::EmailValidation#is_disposable_or_temporary
+      - Loqate::EmailValidation#is_complainer_or_fraud_risk
+      - Loqate::EmailValidation#duration
+      - Loqate::EmailValidation#valid?
+      - Loqate::EmailValidation#valid_domain?
+      - Loqate::EmailValidation#invalid?
+      - Loqate::EmailValidation#timeout?
       - Loqate::Error#id
       - Loqate::Error#description
       - Loqate::Error#cause
@@ -41,6 +60,7 @@ rules:
       - Loqate::Gateway#config
       - Loqate::Gateway#initialize
       - Loqate::Gateway#address
+      - Loqate::Gateway#email
       - Loqate::Gateway#phone
       - Loqate::PhoneGateway#initialize
       - Loqate::PhoneNumberValidation#phone_number
@@ -81,6 +101,12 @@ rules:
       - Loqate::Client#format_params
       - Loqate::Client#headers
       - Loqate::DetailedAddress#==
+      - Loqate::EmailGateway#error_mapper
+      - Loqate::EmailGateway#client
+      - Loqate::EmailGateway#mapper
+      - Loqate::EmailGateway#build_error_from
+      - Loqate::EmailGateway#build_email_validation_from
+      - Loqate::EmailGateway#build_email_validations_from
       - Loqate::Util.camelize
       - Loqate::Util#camelize
       - Loqate::Util.underscore
@@ -115,6 +141,12 @@ rules:
       - Loqate::Client#headers
       - Loqate::DetailedAddress#initialize
       - Loqate::DetailedAddress#==
+      - Loqate::EmailGateway#error_mapper
+      - Loqate::EmailGateway#client
+      - Loqate::EmailGateway#mapper
+      - Loqate::EmailGateway#build_error_from
+      - Loqate::EmailGateway#build_email_validation_from
+      - Loqate::EmailGateway#build_email_validations_from
       - Loqate::Error#attributes
       - Loqate::Gateway#client
       - Loqate::PhoneGateway#mapper

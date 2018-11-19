@@ -1,4 +1,5 @@
 require 'loqate/address_gateway'
+require 'loqate/email_gateway'
 require 'loqate/phone_gateway'
 
 module Loqate
@@ -38,6 +39,14 @@ module Loqate
     #
     def phone
       @phone ||= PhoneGateway.new(client)
+    end
+
+    # Gateway to the Email verification APIs.
+    #
+    # @return [EmailGateway] An instance of an email gateway.
+    #
+    def email
+      @email ||= EmailGateway.new(client)
     end
 
     private

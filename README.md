@@ -21,6 +21,9 @@ Client to address verification, postcode lookup, & data quality services from Lo
     - [Retrieving the details of an address](#retrieving-the-details-of-an-address)
   - [Phone API](#phone-api)
     - [Validating a phone number](#validating-a-phone-number)
+  - [Email API](#phone-api)
+    - [Validating an email address](#validating-an-email-address)
+    - [Validating multiple email addresses](#validating-multiple-email-addresses)
 - [Development](#development)
 - [Contributing](#contributing)
 - [License](#license)
@@ -142,6 +145,50 @@ phone_validation.country_prefix    # => 44
 phone_validation.number_type       # => 'Mobile'
 ```
 
+### Email API
+
+The Email API consists of two main API requests:
+[Validate](https://www.loqate.com/resources/support/apis/EmailValidation/Interactive/Validate/2/) request to validate
+a single email adress; and a
+[Batch Validate](https://www.loqate.com/resources/support/apis/EmailValidation/Batch/Validate/1.2/) request to
+validate multiple emails at once.
+
+#### Validating an email address
+```ruby
+email_validation = gateway.email.validate!(email: 'person@gmail.com')
+
+email_validation.response_code               # => 'Valid'
+email_validation.response_message            # => 'Email address was fully validated'
+email_validation.email_address               # => 'person@gmail.com'
+email_validation.user_account                # => 'person'
+email_validation.domain                      # => 'gmail.com'
+email_validation.is_disposable_or_temporary  # => false
+email_validation.is_complainer_or_fraud_risk # => false
+email_validation.duration                    # => 0.007366261
+email_validation.valid?                      # => true
+email_validation.valid_domain?               # => true
+email_validation.invalid?                    # => false
+email_validation.timeout?                    # => false
+```
+
+#### Validating multiple email addresses
+
+```ruby                                                                    
+email_validations = gateway.email.batch_validate!(emails: %w[person@gmail.com])
+email_validation = email_validations.first
+
+email_validation.status            # => 'Valid'
+email_validation.email_address     # => 'person@gmail.com'
+email_validation.account           # => 'person'
+email_validation.domain            # => 'gmail.com'
+email_validation.is_disposible     # => false
+email_validation.is_system_mailbox # => false
+email_validation.valid?            # => true
+email_validation.invalid?          # => false
+email_validation.unknown?          # => false
+email_validation.unverified?       # => false
+```
+   
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies, configure git hooks and create support files.
