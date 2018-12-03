@@ -114,7 +114,6 @@ selection.
 
 ```ruby
 addresses = gateway.address.find!(text: 'EC1Y 8AF', country: 'GB', limit: 5)
-
 addresses.first.id # => 'GB|RM|B|8144611'
 ```
 
@@ -138,17 +137,8 @@ a new phone number validation request.
 
 ```ruby
 phone_validation = gateway.phone.validate!(phone: '+447440029210', country: 'GB')
-
-phone_validation.phone_number      # => '+447440029210'
-phone_validation.request_processed # => true
-phone_validation.is_valid          # => 'Yes' -> This is how Loqate defines validity
-phone_validation.valid?            # => true
-phone_validation.network_code      # => '26'
-phone_validation.network_name      # => 'Telefonica UK'
-phone_validation.network_country   # => 'GB'
-phone_validation.national_format   # => '07440 029210'
-phone_validation.country_prefix    # => 44
-phone_validation.number_type       # => 'Mobile'
+phone_validation.phone_number # => '+447440029210'
+phone_validation.valid?       # => true
 ```
 
 ### Email API
@@ -162,37 +152,15 @@ validate multiple emails at once.
 #### Validating an email address
 ```ruby
 email_validation = gateway.email.validate!(email: 'person@gmail.com')
-
-email_validation.response_code               # => 'Valid'
-email_validation.response_message            # => 'Email address was fully validated'
-email_validation.email_address               # => 'person@gmail.com'
-email_validation.user_account                # => 'person'
-email_validation.domain                      # => 'gmail.com'
-email_validation.is_disposable_or_temporary  # => false
-email_validation.is_complainer_or_fraud_risk # => false
-email_validation.duration                    # => 0.007366261
-email_validation.valid?                      # => true
-email_validation.valid_domain?               # => true
-email_validation.invalid?                    # => false
-email_validation.timeout?                    # => false
+email_validation.valid? # => true
 ```
 
 #### Validating multiple email addresses
 
 ```ruby                                                                    
 email_validations = gateway.email.batch_validate!(emails: %w[person@gmail.com])
-email_validation = email_validations.first
-
-email_validation.status            # => 'Valid'
-email_validation.email_address     # => 'person@gmail.com'
-email_validation.account           # => 'person'
-email_validation.domain            # => 'gmail.com'
-email_validation.is_disposible     # => false
-email_validation.is_system_mailbox # => false
-email_validation.valid?            # => true
-email_validation.invalid?          # => false
-email_validation.unknown?          # => false
-email_validation.unverified?       # => false
+email_validation  = email_validations.first
+email_validation.valid? # => true
 ```
 
 ### Bank API
@@ -221,10 +189,10 @@ account_validation.correct? # => true
 #### Validating multiple bank accounts
 ```ruby
 accounts_validations = gateway.bank.batch_validate_accounts!(
-  account_numbers: %w[51065718 00000000],
-  sort_codes: %w[40-41-31 000000]
+  account_numbers: %w[51065718 12001020],
+  sort_codes: %w[40-41-31 083210]
 )
-accounts_validations.first.correct? # => true
+accounts_validations.first.correct?  # => true
 accounts_validations.second.correct? # => false
 ```
 
