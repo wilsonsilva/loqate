@@ -83,35 +83,35 @@ rules:
       - Loqate::Bank::Gateway#initialize
       - Loqate::Bank::InternationalAccountValidation#correct?
       - Loqate::Bank::InternationalAccountValidation#is_correct
-      - Loqate::BatchEmailValidation#account
-      - Loqate::BatchEmailValidation#domain
-      - Loqate::BatchEmailValidation#email_address
-      - Loqate::BatchEmailValidation#invalid?
-      - Loqate::BatchEmailValidation#is_disposible
-      - Loqate::BatchEmailValidation#is_system_mailbox
-      - Loqate::BatchEmailValidation#status
-      - Loqate::BatchEmailValidation#unknown?
-      - Loqate::BatchEmailValidation#unverified?
-      - Loqate::BatchEmailValidation#valid?
+      - Loqate::Email::BatchEmailValidation#account
+      - Loqate::Email::BatchEmailValidation#domain
+      - Loqate::Email::BatchEmailValidation#email_address
+      - Loqate::Email::BatchEmailValidation#invalid?
+      - Loqate::Email::BatchEmailValidation#is_disposible
+      - Loqate::Email::BatchEmailValidation#is_system_mailbox
+      - Loqate::Email::BatchEmailValidation#status
+      - Loqate::Email::BatchEmailValidation#unknown?
+      - Loqate::Email::BatchEmailValidation#unverified?
+      - Loqate::Email::BatchEmailValidation#valid?
       - Loqate::Configuration#api_key
       - Loqate::Configuration#host
       - Loqate::Configuration#initialize
       - Loqate::Configuration#language
       - Loqate::Address::DetailedAddress#==
       - Loqate::Address::DetailedAddress#initialize
-      - Loqate::EmailGateway#initialize
-      - Loqate::EmailValidation#domain
-      - Loqate::EmailValidation#duration
-      - Loqate::EmailValidation#email_address
-      - Loqate::EmailValidation#invalid?
-      - Loqate::EmailValidation#is_complainer_or_fraud_risk
-      - Loqate::EmailValidation#is_disposable_or_temporary
-      - Loqate::EmailValidation#response_code
-      - Loqate::EmailValidation#response_message
-      - Loqate::EmailValidation#timeout?
-      - Loqate::EmailValidation#user_account
-      - Loqate::EmailValidation#valid?
-      - Loqate::EmailValidation#valid_domain?
+      - Loqate::Email::Gateway#initialize
+      - Loqate::Email::EmailValidation#domain
+      - Loqate::Email::EmailValidation#duration
+      - Loqate::Email::EmailValidation#email_address
+      - Loqate::Email::EmailValidation#invalid?
+      - Loqate::Email::EmailValidation#is_complainer_or_fraud_risk
+      - Loqate::Email::EmailValidation#is_disposable_or_temporary
+      - Loqate::Email::EmailValidation#response_code
+      - Loqate::Email::EmailValidation#response_message
+      - Loqate::Email::EmailValidation#timeout?
+      - Loqate::Email::EmailValidation#user_account
+      - Loqate::Email::EmailValidation#valid?
+      - Loqate::Email::EmailValidation#valid_domain?
       - Loqate::Error#cause
       - Loqate::Error#description
       - Loqate::Error#id
@@ -171,12 +171,12 @@ rules:
       - Loqate::Client#format_params
       - Loqate::Client#headers
       - Loqate::Address::DetailedAddress#==
-      - Loqate::EmailGateway#build_email_validation_from
-      - Loqate::EmailGateway#build_email_validations_from
-      - Loqate::EmailGateway#build_error_from
-      - Loqate::EmailGateway#client
-      - Loqate::EmailGateway#error_mapper
-      - Loqate::EmailGateway#mapper
+      - Loqate::Email::Gateway#build_email_validation_from
+      - Loqate::Email::Gateway#build_email_validations_from
+      - Loqate::Email::Gateway#build_error_from
+      - Loqate::Email::Gateway#client
+      - Loqate::Email::Gateway#error_mapper
+      - Loqate::Email::Gateway#mapper
       - Loqate::Error#attributes
       - Loqate::Gateway#client
       - Loqate::PhoneGateway#build_error_from
@@ -220,12 +220,12 @@ rules:
       - Loqate::Client#headers
       - Loqate::Address::DetailedAddress#==
       - Loqate::Address::DetailedAddress#initialize
-      - Loqate::EmailGateway#build_email_validation_from
-      - Loqate::EmailGateway#build_email_validations_from
-      - Loqate::EmailGateway#build_error_from
-      - Loqate::EmailGateway#client
-      - Loqate::EmailGateway#error_mapper
-      - Loqate::EmailGateway#mapper
+      - Loqate::Email::Gateway#build_email_validation_from
+      - Loqate::Email::Gateway#build_email_validations_from
+      - Loqate::Email::Gateway#build_error_from
+      - Loqate::Email::Gateway#client
+      - Loqate::Email::Gateway#error_mapper
+      - Loqate::Email::Gateway#mapper
       - Loqate::Error#attributes
       - Loqate::Gateway#client
       - Loqate::PhoneGateway#build_error_from

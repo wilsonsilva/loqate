@@ -1,7 +1,7 @@
-require 'loqate/email_gateway'
+require 'loqate/email/gateway'
 
-RSpec.describe Loqate::EmailGateway, vcr: true do
-  let(:dev_api_key)   { File.read(File.dirname(__FILE__) + '/../../.api_key').strip }
+RSpec.describe Loqate::Email::Gateway, vcr: true do
+  let(:dev_api_key)   { File.read(File.dirname(__FILE__) + '/../../../.api_key').strip }
   let(:configuration) { Loqate::Configuration.new(api_key: dev_api_key) }
   let(:client)        { Loqate::Client.new(configuration) }
   let(:email_gateway) { described_class.new(client) }
@@ -27,7 +27,7 @@ RSpec.describe Loqate::EmailGateway, vcr: true do
         result = email_gateway.batch_validate(emails: %w[not_an_email contact@wilsonsilva.net temp@dispostable.com])
 
         expect(result.value).to contain_exactly(
-          Loqate::BatchEmailValidation.new(
+          Loqate::Email::BatchEmailValidation.new(
             status: 'Invalid',
             email_address: 'not_an_email',
             account: '',
@@ -35,7 +35,7 @@ RSpec.describe Loqate::EmailGateway, vcr: true do
             is_disposible: false,
             is_system_mailbox: false
           ),
-          Loqate::BatchEmailValidation.new(
+          Loqate::Email::BatchEmailValidation.new(
             status: 'Valid',
             email_address: 'contact@wilsonsilva.net',
             account: 'contact',
@@ -43,7 +43,7 @@ RSpec.describe Loqate::EmailGateway, vcr: true do
             is_disposible: false,
             is_system_mailbox: true
           ),
-          Loqate::BatchEmailValidation.new(
+          Loqate::Email::BatchEmailValidation.new(
             status: 'Unknown',
             email_address: 'temp@dispostable.com',
             account: 'temp',
@@ -62,7 +62,7 @@ RSpec.describe Loqate::EmailGateway, vcr: true do
         email_validations = email_gateway.batch_validate!(emails: %w[contact@wilsonsilva.net])
 
         expect(email_validations).to contain_exactly(
-          Loqate::BatchEmailValidation.new(
+          Loqate::Email::BatchEmailValidation.new(
             status: 'Valid',
             email_address: 'contact@wilsonsilva.net',
             account: 'contact',
@@ -105,7 +105,7 @@ RSpec.describe Loqate::EmailGateway, vcr: true do
         result = email_gateway.validate(email: 'wilson.silva@gmail.com')
 
         expect(result.value).to eq(
-          Loqate::EmailValidation.new(
+          Loqate::Email::EmailValidation.new(
             response_code: 'Valid',
             response_message: 'Email address was fully validated',
             email_address: 'wilson.silva@gmail.com',
@@ -124,7 +124,7 @@ RSpec.describe Loqate::EmailGateway, vcr: true do
         result = email_gateway.validate(email: 'contact@wilsonsilva.net')
 
         expect(result.value).to eq(
-          Loqate::EmailValidation.new(
+          Loqate::Email::EmailValidation.new(
             response_code: 'Valid_CatchAll',
             response_message: 'Mail is routable to the domain but account could not be validated',
             email_address: 'contact@wilsonsilva.net',
@@ -143,7 +143,7 @@ RSpec.describe Loqate::EmailGateway, vcr: true do
         result = email_gateway.validate(email: '404@404.pl')
 
         expect(result.value).to eq(
-          Loqate::EmailValidation.new(
+          Loqate::Email::EmailValidation.new(
             response_code: 'Invalid',
             response_message: 'Email Address is not valid',
             email_address: '404@404.pl',
@@ -164,7 +164,7 @@ RSpec.describe Loqate::EmailGateway, vcr: true do
         email_validation = email_gateway.validate!(email: 'contact@wilsonsilva.net')
 
         expect(email_validation).to eq(
-          Loqate::EmailValidation.new(
+          Loqate::Email::EmailValidation.new(
             response_code: 'Valid_CatchAll',
             response_message: 'Mail is routable to the domain but account could not be validated',
             email_address: 'contact@wilsonsilva.net',

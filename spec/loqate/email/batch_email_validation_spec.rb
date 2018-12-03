@@ -1,6 +1,6 @@
-require 'loqate/batch_email_validation'
+require 'loqate/email/batch_email_validation'
 
-RSpec.describe Loqate::BatchEmailValidation do
+RSpec.describe Loqate::Email::BatchEmailValidation do
   let(:attributes) do
     {
       status: 'Valid',

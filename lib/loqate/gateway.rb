@@ -1,6 +1,6 @@
 require 'loqate/address/gateway'
 require 'loqate/bank/gateway'
-require 'loqate/email_gateway'
+require 'loqate/email/gateway'
 require 'loqate/phone_gateway'
 
 module Loqate
@@ -44,10 +44,10 @@ module Loqate
 
     # Gateway to the Email verification APIs.
     #
-    # @return [EmailGateway] An instance of an email gateway.
+    # @return [Email::Gateway] An instance of an email gateway.
     #
     def email
-      @email ||= EmailGateway.new(client)
+      @email ||= Email::Gateway.new(client)
     end
 
     # Gateway to the Bank verification APIs.

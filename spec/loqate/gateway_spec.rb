@@ -17,7 +17,7 @@ RSpec.describe Loqate::Gateway do
 
   describe '#email' do
     it 'returns an email gateway' do
-      expect(gateway.email).to be_an_instance_of(Loqate::EmailGateway)
+      expect(gateway.email).to be_an_instance_of(Loqate::Email::Gateway)
     end
   end
 

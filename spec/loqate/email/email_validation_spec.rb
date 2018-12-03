@@ -1,6 +1,6 @@
-require 'loqate/email_validation'
+require 'loqate/email/email_validation'
 
-RSpec.describe Loqate::EmailValidation do
+RSpec.describe Loqate::Email::EmailValidation do
   let(:attributes) do
     {
       response_code: 'Valid',
