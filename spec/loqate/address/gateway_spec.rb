@@ -1,7 +1,7 @@
-require 'loqate/address_gateway'
+require 'loqate/address/gateway'
 
-RSpec.describe Loqate::AddressGateway, vcr: true do
-  let(:dev_api_key)     { File.read(File.dirname(__FILE__) + '/../../.api_key').strip }
+RSpec.describe Loqate::Address::Gateway, vcr: true do
+  let(:dev_api_key)     { File.read(File.dirname(__FILE__) + '/../../../.api_key').strip }
   let(:configuration)   { Loqate::Configuration.new(api_key: dev_api_key) }
   let(:client)          { Loqate::Client.new(configuration) }
   let(:address_gateway) { described_class.new(client) }
@@ -34,7 +34,7 @@ RSpec.describe Loqate::AddressGateway, vcr: true do
       it 'returns a list of addresses' do
         result = address_gateway.find(countries: 'GB', text: 'NW10 6RB')
         expect(result.value).to contain_exactly(
-          Loqate::Address.new(
+          Loqate::Address::Address.new(
             description: 'Scrubs Lane, London - 17 Addresses',
             highlight: '0-4,5-8',
             id: 'GB|RM|ENG|6RB-NW10',
@@ -49,14 +49,14 @@ RSpec.describe Loqate::AddressGateway, vcr: true do
       it 'returns a list of addresses' do
         result = address_gateway.find(countries: 'GB', text: 'Scrubs Lane')
         expect(result.value).to contain_exactly(
-          Loqate::Address.new(
+          Loqate::Address::Address.new(
             description: 'London - 209 Addresses',
             highlight: '0-6,7-11',
             id: 'GB|RM|ENG|LONDON---LANE-SCRUBS',
             text: 'Scrubs Lane',
             type: 'Street'
           ),
-          Loqate::Address.new(
+          Loqate::Address::Address.new(
             description: 'Danbury, Chelmsford, CM3 4NZ',
             highlight: '0-6',
             id: 'GB|RM|B|27570297|A1',
@@ -71,7 +71,7 @@ RSpec.describe Loqate::AddressGateway, vcr: true do
       it 'returns a limited set of addresses' do
         result = address_gateway.find(countries: 'GB', text: 'Scrubs Lane', limit: 1)
         expect(result.value).to contain_exactly(
-          Loqate::Address.new(
+          Loqate::Address::Address.new(
             description: 'London - 208 Addresses',
             highlight: '0-6,7-11',
             id: 'GB|RM|ENG|LONDON---LANE-SCRUBS',
@@ -104,7 +104,7 @@ RSpec.describe Loqate::AddressGateway, vcr: true do
       it 'returns detailed addresses' do
         result = address_gateway.retrieve(id: 'GB|RM|B|52509479')
         expect(result.value).to eq(
-          Loqate::DetailedAddress.new(
+          Loqate::Address::DetailedAddress.new(
             id: 'GB|RM|B|52509479',
             domestic_id: '52509479',
             language: 'ENG',
@@ -121,7 +121,7 @@ RSpec.describe Loqate::AddressGateway, vcr: true do
         address = address_gateway.find!(countries: 'GB', text: 'NW10 6RB')
 
         expect(address).to contain_exactly(
-          Loqate::Address.new(
+          Loqate::Address::Address.new(
             description: 'Scrubs Lane, London - 18 Addresses',
             highlight: '0-4,5-8',
             id: 'GB|RM|ENG|6RB-NW10',
@@ -147,7 +147,7 @@ RSpec.describe Loqate::AddressGateway, vcr: true do
         address = address_gateway.retrieve!(id: 'GB|RM|B|52509479')
 
         expect(address).to eq(
-          Loqate::DetailedAddress.new(
+          Loqate::Address::DetailedAddress.new(
             id: 'GB|RM|B|52509479',
             domestic_id: '52509479',
             language: 'ENG',

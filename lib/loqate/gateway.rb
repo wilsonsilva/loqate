@@ -1,4 +1,4 @@
-require 'loqate/address_gateway'
+require 'loqate/address/gateway'
 require 'loqate/bank/gateway'
 require 'loqate/email_gateway'
 require 'loqate/phone_gateway'
@@ -28,10 +28,10 @@ module Loqate
 
     # Gateway to the Address APIs.
     #
-    # @return [AddressGateway] An instance of an address gateway.
+    # @return [Address::Gateway] An instance of an address gateway.
     #
     def address
-      @address ||= AddressGateway.new(client)
+      @address ||= Address::Gateway.new(client)
     end
 
     # Gateway to the Phone number API.
@@ -52,7 +52,7 @@ module Loqate
 
     # Gateway to the Bank verification APIs.
     #
-    # @return [BankGateway] An instance of a bank gateway.
+    # @return [Bank::Gateway] An instance of a bank gateway.
     #
     def bank
       @bank ||= Bank::Gateway.new(client)

@@ -5,7 +5,7 @@ RSpec.describe Loqate::Gateway do
 
   describe '#address' do
     it 'returns an address gateway' do
-      expect(gateway.address).to be_an_instance_of(Loqate::AddressGateway)
+      expect(gateway.address).to be_an_instance_of(Loqate::Address::Gateway)
     end
   end
 

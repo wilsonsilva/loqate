@@ -1,6 +1,6 @@
-require 'loqate/address'
+require 'loqate/address/address'
 
-RSpec.describe Loqate::Address do
+RSpec.describe Loqate::Address::Address do
   let(:attributes) do
     {
       id: 'GB|RM|ENG|LONDON---LANE-SCRUBS',

@@ -1,6 +1,6 @@
-require 'loqate/detailed_address'
+require 'loqate/address/detailed_address'
 
-RSpec.describe Loqate::DetailedAddress do
+RSpec.describe Loqate::Address::DetailedAddress do
   let(:address) { described_class.new(id: 1) }
 
   described_class::ATTRIBUTES.each do |attribute|

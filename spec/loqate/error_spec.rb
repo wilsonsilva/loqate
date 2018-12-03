@@ -1,4 +1,4 @@
-require 'loqate/detailed_address'
+require 'loqate/address/detailed_address'
 
 RSpec.describe Loqate::Error do
   let(:error) { described_class.new(id: 1006, description: 'desc', cause: 'the cause', resolution: 'the resolution') }

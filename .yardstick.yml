@@ -15,15 +15,15 @@ rules:
   ExampleTag:
     enabled: true
     exclude:
-      - Loqate::Address#==
-      - Loqate::Address#attributes
-      - Loqate::Address#description
-      - Loqate::Address#highlight
-      - Loqate::Address#id
-      - Loqate::Address#initialize
-      - Loqate::Address#text
-      - Loqate::Address#type
-      - Loqate::AddressGateway#initialize
+      - Loqate::Address::Address#==
+      - Loqate::Address::Address#attributes
+      - Loqate::Address::Address#description
+      - Loqate::Address::Address#highlight
+      - Loqate::Address::Address#id
+      - Loqate::Address::Address#initialize
+      - Loqate::Address::Address#text
+      - Loqate::Address::Address#type
+      - Loqate::Address::Gateway#initialize
       - Loqate::APIResult#errors?
       - Loqate::APIResult#initialize
       - Loqate::APIResult#items
@@ -97,8 +97,8 @@ rules:
       - Loqate::Configuration#host
       - Loqate::Configuration#initialize
       - Loqate::Configuration#language
-      - Loqate::DetailedAddress#==
-      - Loqate::DetailedAddress#initialize
+      - Loqate::Address::DetailedAddress#==
+      - Loqate::Address::DetailedAddress#initialize
       - Loqate::EmailGateway#initialize
       - Loqate::EmailValidation#domain
       - Loqate::EmailValidation#duration
@@ -144,19 +144,19 @@ rules:
   ReturnTag:
     enabled: true
     exclude:
-      - Loqate::Address#==
-      - Loqate::Address#attributes
-      - Loqate::Address#description
-      - Loqate::Address#highlight
-      - Loqate::Address#id
-      - Loqate::Address#text
-      - Loqate::Address#type
-      - Loqate::AddressGateway#build_addresses_from
-      - Loqate::AddressGateway#build_detailed_address_from
-      - Loqate::AddressGateway#build_error_from
-      - Loqate::AddressGateway#client
-      - Loqate::AddressGateway#error_mapper
-      - Loqate::AddressGateway#mapper
+      - Loqate::Address::Address#==
+      - Loqate::Address::Address#attributes
+      - Loqate::Address::Address#description
+      - Loqate::Address::Address#highlight
+      - Loqate::Address::Address#id
+      - Loqate::Address::Address#text
+      - Loqate::Address::Address#type
+      - Loqate::Address::Gateway#build_addresses_from
+      - Loqate::Address::Gateway#build_detailed_address_from
+      - Loqate::Address::Gateway#build_error_from
+      - Loqate::Address::Gateway#client
+      - Loqate::Address::Gateway#error_mapper
+      - Loqate::Address::Gateway#mapper
       - Loqate::Bank::Gateway#build_account_validation_from
       - Loqate::Bank::Gateway#build_account_validations_from
       - Loqate::Bank::Gateway#build_branch_from
@@ -170,7 +170,7 @@ rules:
       - Loqate::Client#configuration
       - Loqate::Client#format_params
       - Loqate::Client#headers
-      - Loqate::DetailedAddress#==
+      - Loqate::Address::DetailedAddress#==
       - Loqate::EmailGateway#build_email_validation_from
       - Loqate::EmailGateway#build_email_validations_from
       - Loqate::EmailGateway#build_error_from
@@ -192,19 +192,19 @@ rules:
   Summary::Presence:
     enabled: true
     exclude:
-      - Loqate::Address#==
-      - Loqate::Address#attributes
-      - Loqate::Address#description
-      - Loqate::Address#highlight
-      - Loqate::Address#id
-      - Loqate::Address#text
-      - Loqate::Address#type
-      - Loqate::AddressGateway#build_addresses_from
-      - Loqate::AddressGateway#build_detailed_address_from
-      - Loqate::AddressGateway#build_error_from
-      - Loqate::AddressGateway#client
-      - Loqate::AddressGateway#error_mapper
-      - Loqate::AddressGateway#mapper
+      - Loqate::Address::Address#==
+      - Loqate::Address::Address#attributes
+      - Loqate::Address::Address#description
+      - Loqate::Address::Address#highlight
+      - Loqate::Address::Address#id
+      - Loqate::Address::Address#text
+      - Loqate::Address::Address#type
+      - Loqate::Address::Gateway#build_addresses_from
+      - Loqate::Address::Gateway#build_detailed_address_from
+      - Loqate::Address::Gateway#build_error_from
+      - Loqate::Address::Gateway#client
+      - Loqate::Address::Gateway#error_mapper
+      - Loqate::Address::Gateway#mapper
       - Loqate::Bank::Gateway#build_account_validation_from
       - Loqate::Bank::Gateway#build_account_validations_from
       - Loqate::Bank::Gateway#build_branch_from
@@ -218,8 +218,8 @@ rules:
       - Loqate::Client#configuration
       - Loqate::Client#format_params
       - Loqate::Client#headers
-      - Loqate::DetailedAddress#==
-      - Loqate::DetailedAddress#initialize
+      - Loqate::Address::DetailedAddress#==
+      - Loqate::Address::DetailedAddress#initialize
       - Loqate::EmailGateway#build_email_validation_from
       - Loqate::EmailGateway#build_email_validations_from
       - Loqate::EmailGateway#build_error_from

@@ -1,5 +1,5 @@
 require 'loqate/mappers/generic_mapper'
-require 'loqate/address'
+require 'loqate/address/address'
 
 RSpec.describe Loqate::Mappers::GenericMapper do
   let(:generic_mapper) { described_class.new }
@@ -18,10 +18,10 @@ RSpec.describe Loqate::Mappers::GenericMapper do
     end
 
     it 'transforms an array of hashes into objects of a given class' do
-      addresses = generic_mapper.map(address_hashes, Loqate::Address)
+      addresses = generic_mapper.map(address_hashes, Loqate::Address::Address)
 
       expect(addresses).to contain_exactly(
-        Loqate::Address.new(
+        Loqate::Address::Address.new(
           id: 'GB|RM|B|8144612',
           type: 'Postcode',
           text: 'WC0 9BK',
@@ -44,10 +44,10 @@ RSpec.describe Loqate::Mappers::GenericMapper do
     end
 
     it 'transforms a hash into an object of a given class' do
-      address = generic_mapper.map_one(address_hash, Loqate::Address)
+      address = generic_mapper.map_one(address_hash, Loqate::Address::Address)
 
       expect(address).to eq(
-        Loqate::Address.new(
+        Loqate::Address::Address.new(
           id: 'GB|RM|B|8144612',
           type: 'Postcode',
           text: 'WC0 9BK',
