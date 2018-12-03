@@ -19,7 +19,7 @@
 - [ ] Data Cleanse
 - [x] Email Verification
 - [x] Phone Verification
-- [ ] Bank Verification
+- [x] Bank Verification
 
 ## Formats
 
