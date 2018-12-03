@@ -1,7 +1,7 @@
-require 'loqate/phone_gateway'
+require 'loqate/phone/gateway'
 
-RSpec.describe Loqate::PhoneGateway, vcr: true do
-  let(:dev_api_key)   { File.read(File.dirname(__FILE__) + '/../../.api_key').strip }
+RSpec.describe Loqate::Phone::Gateway, vcr: true do
+  let(:dev_api_key)   { File.read(File.dirname(__FILE__) + '/../../../.api_key').strip }
   let(:configuration) { Loqate::Configuration.new(api_key: dev_api_key) }
   let(:client)        { Loqate::Client.new(configuration) }
   let(:phone_gateway) { described_class.new(client) }
@@ -28,7 +28,7 @@ RSpec.describe Loqate::PhoneGateway, vcr: true do
         result = phone_gateway.validate(phone: '0', country: 'GB')
 
         expect(result.value).to eq(
-          Loqate::PhoneNumberValidation.new(
+          Loqate::Phone::PhoneNumberValidation.new(
             phone_number: '',
             request_processed: true,
             is_valid: 'No',
@@ -48,7 +48,7 @@ RSpec.describe Loqate::PhoneGateway, vcr: true do
         result = phone_gateway.validate(phone: '447440029210', country: 'GB')
 
         expect(result.value).to eq(
-          Loqate::PhoneNumberValidation.new(
+          Loqate::Phone::PhoneNumberValidation.new(
             phone_number: '+447440029210',
             request_processed: true,
             is_valid: 'Yes',
@@ -70,7 +70,7 @@ RSpec.describe Loqate::PhoneGateway, vcr: true do
         phone_validation_result = phone_gateway.validate!(phone: '447440029210', country: 'GB')
 
         expect(phone_validation_result).to eq(
-          Loqate::PhoneNumberValidation.new(
+          Loqate::Phone::PhoneNumberValidation.new(
             phone_number: '+447440029210',
             request_processed: true,
             is_valid: 'Yes',

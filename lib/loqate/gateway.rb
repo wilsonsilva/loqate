@@ -1,7 +1,7 @@
 require 'loqate/address/gateway'
 require 'loqate/bank/gateway'
 require 'loqate/email/gateway'
-require 'loqate/phone_gateway'
+require 'loqate/phone/gateway'
 
 module Loqate
   # Acts as a single point of entry for a defined group of API's.
@@ -36,10 +36,10 @@ module Loqate
 
     # Gateway to the Phone number API.
     #
-    # @return [PhoneGateway] An instance of a phone gateway.
+    # @return [Phone::Gateway] An instance of a phone gateway.
     #
     def phone
-      @phone ||= PhoneGateway.new(client)
+      @phone ||= Phone::Gateway.new(client)
     end
 
     # Gateway to the Email verification APIs.

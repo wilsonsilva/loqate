@@ -1,6 +1,6 @@
-require 'loqate/phone_number_validation'
+require 'loqate/phone/phone_number_validation'
 
-RSpec.describe Loqate::PhoneNumberValidation do
+RSpec.describe Loqate::Phone::PhoneNumberValidation do
   let(:attributes) do
     {
       phone_number: '+447440019210',
@@ -73,8 +73,8 @@ RSpec.describe Loqate::PhoneNumberValidation do
   describe '#==' do
     context 'when the attributes are different' do
       it 'returns false' do
-        number_validation1 = Loqate::PhoneNumberValidation.new(attributes)
-        number_validation2 = Loqate::PhoneNumberValidation.new(attributes.merge(network_name: 'Giffgaff'))
+        number_validation1 = Loqate::Phone::PhoneNumberValidation.new(attributes)
+        number_validation2 = Loqate::Phone::PhoneNumberValidation.new(attributes.merge(network_name: 'Giffgaff'))
 
         expect(number_validation1).not_to eq(number_validation2)
       end
@@ -82,8 +82,8 @@ RSpec.describe Loqate::PhoneNumberValidation do
 
     context 'when the attributes are the same' do
       it 'returns true' do
-        number_validation1 = Loqate::PhoneNumberValidation.new(attributes)
-        number_validation2 = Loqate::PhoneNumberValidation.new(attributes)
+        number_validation1 = Loqate::Phone::PhoneNumberValidation.new(attributes)
+        number_validation2 = Loqate::Phone::PhoneNumberValidation.new(attributes)
 
         expect(number_validation1).to eq(number_validation2)
       end

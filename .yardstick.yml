@@ -123,17 +123,17 @@ rules:
       - Loqate::Gateway#email
       - Loqate::Gateway#initialize
       - Loqate::Gateway#phone
-      - Loqate::PhoneGateway#initialize
-      - Loqate::PhoneNumberValidation#country_prefix
-      - Loqate::PhoneNumberValidation#is_valid
-      - Loqate::PhoneNumberValidation#national_format
-      - Loqate::PhoneNumberValidation#network_code
-      - Loqate::PhoneNumberValidation#network_country
-      - Loqate::PhoneNumberValidation#network_name
-      - Loqate::PhoneNumberValidation#number_type
-      - Loqate::PhoneNumberValidation#phone_number
-      - Loqate::PhoneNumberValidation#request_processed
-      - Loqate::PhoneNumberValidation#valid?
+      - Loqate::Phone::Gateway#initialize
+      - Loqate::Phone::PhoneNumberValidation#country_prefix
+      - Loqate::Phone::PhoneNumberValidation#is_valid
+      - Loqate::Phone::PhoneNumberValidation#national_format
+      - Loqate::Phone::PhoneNumberValidation#network_code
+      - Loqate::Phone::PhoneNumberValidation#network_country
+      - Loqate::Phone::PhoneNumberValidation#network_name
+      - Loqate::Phone::PhoneNumberValidation#number_type
+      - Loqate::Phone::PhoneNumberValidation#phone_number
+      - Loqate::Phone::PhoneNumberValidation#request_processed
+      - Loqate::Phone::PhoneNumberValidation#valid?
       - Loqate::Result#code
       - Loqate::Result#value
       - Loqate::Result::Failure#error
@@ -179,11 +179,11 @@ rules:
       - Loqate::Email::Gateway#mapper
       - Loqate::Error#attributes
       - Loqate::Gateway#client
-      - Loqate::PhoneGateway#build_error_from
-      - Loqate::PhoneGateway#build_phone_validation_from
-      - Loqate::PhoneGateway#client
-      - Loqate::PhoneGateway#error_mapper
-      - Loqate::PhoneGateway#mapper
+      - Loqate::Phone::Gateway#build_error_from
+      - Loqate::Phone::Gateway#build_phone_validation_from
+      - Loqate::Phone::Gateway#client
+      - Loqate::Phone::Gateway#error_mapper
+      - Loqate::Phone::Gateway#mapper
       - Loqate::Result::Failure#error
       - Loqate::Util#camelize
       - Loqate::Util#underscore
@@ -228,11 +228,11 @@ rules:
       - Loqate::Email::Gateway#mapper
       - Loqate::Error#attributes
       - Loqate::Gateway#client
-      - Loqate::PhoneGateway#build_error_from
-      - Loqate::PhoneGateway#build_phone_validation_from
-      - Loqate::PhoneGateway#client
-      - Loqate::PhoneGateway#error_mapper
-      - Loqate::PhoneGateway#mapper
+      - Loqate::Phone::Gateway#build_error_from
+      - Loqate::Phone::Gateway#build_phone_validation_from
+      - Loqate::Phone::Gateway#client
+      - Loqate::Phone::Gateway#error_mapper
+      - Loqate::Phone::Gateway#mapper
       - Loqate::Result::Failure#error
   Summary::Length:
     enabled: false
