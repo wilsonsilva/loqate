@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.addressy.com/BankAccountValidation/Interactive/RetrieveBySortcode/v1.00/json3.ws?Key=<LOQATE_API_KEY>
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Connection:
+      - close
+      Host:
+      - api.addressy.com
+      User-Agent:
+      - http.rb/4.0.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Mon, 03 Dec 2018 20:21:15 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '196'
+      Vary:
+      - Accept-Encoding
+      Cache-Control:
+      - private
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Content-Type, pca-source
+      Records:
+      - '1'
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Xss-Protection:
+      - '1'
+      X-Robots-Tag:
+      - noindex
+      Via:
+      - 1.1 google
+      Set-Cookie:
+      - GCLB=CNne4aO17rG8xgE; path=/; HttpOnly; expires=Mon, 03-Dec-2018 20:22:15
+        GMT
+      Alt-Svc:
+      - clear
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"Items":[{"Error":"1001","Description":"SortCode Required","Cause":"The
+        SortCode parameter was not supplied.","Resolution":"Please ensure that you
+        supply the SortCode parameter and try again."}]}'
+    http_version: 
+  recorded_at: Mon, 03 Dec 2018 20:21:15 GMT
+recorded_with: VCR 4.0.0

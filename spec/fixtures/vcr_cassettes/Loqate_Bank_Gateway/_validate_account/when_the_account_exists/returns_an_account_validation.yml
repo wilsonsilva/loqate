@@ -1,0 +1,68 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.addressy.com/BankAccountValidation/Interactive/Validate/v2/json3.ws?AccountNumber=51065718&Key=<LOQATE_API_KEY>&SortCode=404131
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Connection:
+      - close
+      Host:
+      - api.addressy.com
+      User-Agent:
+      - http.rb/4.0.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Mon, 03 Dec 2018 20:21:10 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '490'
+      Vary:
+      - Accept-Encoding
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Expires:
+      - "-1"
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Content-Type, pca-source
+      Records:
+      - '1'
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Xss-Protection:
+      - '1'
+      X-Robots-Tag:
+      - noindex
+      Via:
+      - 1.1 google
+      Set-Cookie:
+      - GCLB=CIW75sCyitn9qQE; path=/; HttpOnly; expires=Mon, 03-Dec-2018 20:22:10
+        GMT
+      Alt-Svc:
+      - clear
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"Items":[{"IsCorrect":true,"IsDirectDebitCapable":true,"StatusInformation":"OK","CorrectedSortCode":"404131","CorrectedAccountNumber":"51065718","IBAN":"GB67HBUK40413151065718","Bank":"HSBC
+        UK BANK PLC","BankBIC":"HBUKGB41","Branch":"Sheffield City","BranchBIC":"54D","ContactAddressLine1":"Carmel
+        House","ContactAddressLine2":"49-63 Fargate","ContactPostTown":"Sheffield","ContactPostcode":"S1
+        2HD","ContactPhone":"","ContactFax":"","FasterPaymentsSupported":true,"CHAPSSupported":true}]}'
+    http_version: 
+  recorded_at: Mon, 03 Dec 2018 20:21:10 GMT
+recorded_with: VCR 4.0.0

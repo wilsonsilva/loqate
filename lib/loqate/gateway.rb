@@ -1,4 +1,5 @@
 require 'loqate/address_gateway'
+require 'loqate/bank/gateway'
 require 'loqate/email_gateway'
 require 'loqate/phone_gateway'
 
@@ -47,6 +48,14 @@ module Loqate
     #
     def email
       @email ||= EmailGateway.new(client)
+    end
+
+    # Gateway to the Bank verification APIs.
+    #
+    # @return [BankGateway] An instance of a bank gateway.
+    #
+    def bank
+      @bank ||= Bank::Gateway.new(client)
     end
 
     private

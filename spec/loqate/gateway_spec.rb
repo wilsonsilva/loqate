@@ -20,4 +20,10 @@ RSpec.describe Loqate::Gateway do
       expect(gateway.email).to be_an_instance_of(Loqate::EmailGateway)
     end
   end
+
+  describe '#bank' do
+    it 'returns a bank gateway' do
+      expect(gateway.bank).to be_an_instance_of(Loqate::Bank::Gateway)
+    end
+  end
 end

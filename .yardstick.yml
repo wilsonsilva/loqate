@@ -17,143 +17,222 @@ rules:
     exclude:
       - Loqate::Address#==
       - Loqate::Address#attributes
+      - Loqate::Address#description
+      - Loqate::Address#highlight
       - Loqate::Address#id
       - Loqate::Address#initialize
-      - Loqate::Address#type
       - Loqate::Address#text
-      - Loqate::Address#highlight
-      - Loqate::Address#description
+      - Loqate::Address#type
       - Loqate::AddressGateway#initialize
       - Loqate::APIResult#errors?
-      - Loqate::APIResult#items
       - Loqate::APIResult#initialize
-      - Loqate::BatchEmailValidation#status
-      - Loqate::BatchEmailValidation#email_address
+      - Loqate::APIResult#items
+      - Loqate::Bank::AccountValidation#bank
+      - Loqate::Bank::AccountValidation#bank_bic
+      - Loqate::Bank::AccountValidation#branch
+      - Loqate::Bank::AccountValidation#branch_bic
+      - Loqate::Bank::AccountValidation#chaps_supported
+      - Loqate::Bank::AccountValidation#contact_address_line1
+      - Loqate::Bank::AccountValidation#contact_address_line2
+      - Loqate::Bank::AccountValidation#contact_fax
+      - Loqate::Bank::AccountValidation#contact_phone
+      - Loqate::Bank::AccountValidation#contact_post_town
+      - Loqate::Bank::AccountValidation#contact_postcode
+      - Loqate::Bank::AccountValidation#correct?
+      - Loqate::Bank::AccountValidation#corrected_account_number
+      - Loqate::Bank::AccountValidation#corrected_sort_code
+      - Loqate::Bank::AccountValidation#faster_payments_supported
+      - Loqate::Bank::AccountValidation#iban
+      - Loqate::Bank::AccountValidation#is_correct
+      - Loqate::Bank::AccountValidation#is_direct_debit_capable
+      - Loqate::Bank::AccountValidation#status_information
+      - Loqate::Bank::BatchAccountValidation#bank
+      - Loqate::Bank::BatchAccountValidation#bank_bic
+      - Loqate::Bank::BatchAccountValidation#branch
+      - Loqate::Bank::BatchAccountValidation#branch_bic
+      - Loqate::Bank::BatchAccountValidation#contact_address_line1
+      - Loqate::Bank::BatchAccountValidation#contact_address_line2
+      - Loqate::Bank::BatchAccountValidation#contact_fax
+      - Loqate::Bank::BatchAccountValidation#contact_phone
+      - Loqate::Bank::BatchAccountValidation#contact_post_town
+      - Loqate::Bank::BatchAccountValidation#contact_postcode
+      - Loqate::Bank::BatchAccountValidation#correct?
+      - Loqate::Bank::BatchAccountValidation#corrected_account_number
+      - Loqate::Bank::BatchAccountValidation#corrected_sort_code
+      - Loqate::Bank::BatchAccountValidation#iban
+      - Loqate::Bank::BatchAccountValidation#is_correct
+      - Loqate::Bank::BatchAccountValidation#is_direct_debit_capable
+      - Loqate::Bank::BatchAccountValidation#original_account_number
+      - Loqate::Bank::BatchAccountValidation#original_sort_code
+      - Loqate::Bank::BatchAccountValidation#status_information
+      - Loqate::Bank::Branch#bank
+      - Loqate::Bank::Branch#bank_bic
+      - Loqate::Bank::Branch#branch
+      - Loqate::Bank::Branch#branch_bic
+      - Loqate::Bank::Branch#chaps_supported
+      - Loqate::Bank::Branch#contact_address_line1
+      - Loqate::Bank::Branch#contact_address_line2
+      - Loqate::Bank::Branch#contact_fax
+      - Loqate::Bank::Branch#contact_phone
+      - Loqate::Bank::Branch#contact_post_town
+      - Loqate::Bank::Branch#contact_postcode
+      - Loqate::Bank::Branch#faster_payments_supported
+      - Loqate::Bank::CardValidation#card_number
+      - Loqate::Bank::CardValidation#card_type
+      - Loqate::Bank::Gateway#build_branch_from
+      - Loqate::Bank::Gateway#initialize
+      - Loqate::Bank::InternationalAccountValidation#correct?
+      - Loqate::Bank::InternationalAccountValidation#is_correct
       - Loqate::BatchEmailValidation#account
       - Loqate::BatchEmailValidation#domain
+      - Loqate::BatchEmailValidation#email_address
+      - Loqate::BatchEmailValidation#invalid?
       - Loqate::BatchEmailValidation#is_disposible
       - Loqate::BatchEmailValidation#is_system_mailbox
+      - Loqate::BatchEmailValidation#status
+      - Loqate::BatchEmailValidation#unknown?
+      - Loqate::BatchEmailValidation#unverified?
+      - Loqate::BatchEmailValidation#valid?
       - Loqate::Configuration#api_key
       - Loqate::Configuration#host
-      - Loqate::Configuration#language
       - Loqate::Configuration#initialize
-      - Loqate::DetailedAddress#initialize
+      - Loqate::Configuration#language
       - Loqate::DetailedAddress#==
+      - Loqate::DetailedAddress#initialize
       - Loqate::EmailGateway#initialize
+      - Loqate::EmailValidation#domain
+      - Loqate::EmailValidation#duration
+      - Loqate::EmailValidation#email_address
+      - Loqate::EmailValidation#invalid?
+      - Loqate::EmailValidation#is_complainer_or_fraud_risk
+      - Loqate::EmailValidation#is_disposable_or_temporary
       - Loqate::EmailValidation#response_code
       - Loqate::EmailValidation#response_message
-      - Loqate::EmailValidation#email_address
+      - Loqate::EmailValidation#timeout?
       - Loqate::EmailValidation#user_account
-      - Loqate::EmailValidation#domain
-      - Loqate::EmailValidation#is_disposable_or_temporary
-      - Loqate::EmailValidation#is_complainer_or_fraud_risk
-      - Loqate::EmailValidation#duration
       - Loqate::EmailValidation#valid?
       - Loqate::EmailValidation#valid_domain?
-      - Loqate::EmailValidation#invalid?
-      - Loqate::EmailValidation#timeout?
-      - Loqate::Error#id
-      - Loqate::Error#description
       - Loqate::Error#cause
-      - Loqate::Error#resolution
+      - Loqate::Error#description
+      - Loqate::Error#id
       - Loqate::Error#initialize
-      - Loqate::Gateway#config
-      - Loqate::Gateway#initialize
+      - Loqate::Error#resolution
       - Loqate::Gateway#address
+      - Loqate::Gateway#bank
+      - Loqate::Gateway#config
       - Loqate::Gateway#email
+      - Loqate::Gateway#initialize
       - Loqate::Gateway#phone
       - Loqate::PhoneGateway#initialize
+      - Loqate::PhoneNumberValidation#country_prefix
+      - Loqate::PhoneNumberValidation#is_valid
+      - Loqate::PhoneNumberValidation#national_format
+      - Loqate::PhoneNumberValidation#network_code
+      - Loqate::PhoneNumberValidation#network_country
+      - Loqate::PhoneNumberValidation#network_name
+      - Loqate::PhoneNumberValidation#number_type
       - Loqate::PhoneNumberValidation#phone_number
       - Loqate::PhoneNumberValidation#request_processed
-      - Loqate::PhoneNumberValidation#is_valid
-      - Loqate::PhoneNumberValidation#network_code
-      - Loqate::PhoneNumberValidation#network_name
-      - Loqate::PhoneNumberValidation#network_country
-      - Loqate::PhoneNumberValidation#national_format
-      - Loqate::PhoneNumberValidation#country_prefix
-      - Loqate::PhoneNumberValidation#number_type
       - Loqate::PhoneNumberValidation#valid?
-      - Loqate::Result::Success#success?
-      - Loqate::Result::Success#failure?
-      - Loqate::Result::Failure#success?
-      - Loqate::Result::Failure#failure?
       - Loqate::Result#code
       - Loqate::Result#value
       - Loqate::Result::Failure#error
+      - Loqate::Result::Failure#failure?
+      - Loqate::Result::Failure#success?
+      - Loqate::Result::Success#failure?
+      - Loqate::Result::Success#success?
   ReturnTag:
     enabled: true
     exclude:
       - Loqate::Address#==
       - Loqate::Address#attributes
-      - Loqate::Address#id
-      - Loqate::Address#type
-      - Loqate::Address#text
-      - Loqate::Address#highlight
       - Loqate::Address#description
-      - Loqate::AddressGateway#client
-      - Loqate::AddressGateway#mapper
-      - Loqate::AddressGateway#error_mapper
-      - Loqate::AddressGateway#build_error_from
+      - Loqate::Address#highlight
+      - Loqate::Address#id
+      - Loqate::Address#text
+      - Loqate::Address#type
       - Loqate::AddressGateway#build_addresses_from
       - Loqate::AddressGateway#build_detailed_address_from
-      - Loqate::Client#configuration
+      - Loqate::AddressGateway#build_error_from
+      - Loqate::AddressGateway#client
+      - Loqate::AddressGateway#error_mapper
+      - Loqate::AddressGateway#mapper
+      - Loqate::Bank::Gateway#build_account_validation_from
+      - Loqate::Bank::Gateway#build_account_validations_from
+      - Loqate::Bank::Gateway#build_branch_from
+      - Loqate::Bank::Gateway#build_card_validation_from
+      - Loqate::Bank::Gateway#build_error_from
+      - Loqate::Bank::Gateway#build_int_acc_validation_from
+      - Loqate::Bank::Gateway#client
+      - Loqate::Bank::Gateway#error_mapper
+      - Loqate::Bank::Gateway#mapper
       - Loqate::Client#authenticate_params
+      - Loqate::Client#configuration
       - Loqate::Client#format_params
       - Loqate::Client#headers
       - Loqate::DetailedAddress#==
-      - Loqate::EmailGateway#error_mapper
-      - Loqate::EmailGateway#client
-      - Loqate::EmailGateway#mapper
-      - Loqate::EmailGateway#build_error_from
       - Loqate::EmailGateway#build_email_validation_from
       - Loqate::EmailGateway#build_email_validations_from
-      - Loqate::Util.camelize
-      - Loqate::Util#camelize
-      - Loqate::Util.underscore
-      - Loqate::Util#underscore
+      - Loqate::EmailGateway#build_error_from
+      - Loqate::EmailGateway#client
+      - Loqate::EmailGateway#error_mapper
+      - Loqate::EmailGateway#mapper
       - Loqate::Error#attributes
       - Loqate::Gateway#client
-      - Loqate::PhoneGateway#mapper
-      - Loqate::PhoneGateway#error_mapper
-      - Loqate::PhoneGateway#client
       - Loqate::PhoneGateway#build_error_from
       - Loqate::PhoneGateway#build_phone_validation_from
+      - Loqate::PhoneGateway#client
+      - Loqate::PhoneGateway#error_mapper
+      - Loqate::PhoneGateway#mapper
       - Loqate::Result::Failure#error
+      - Loqate::Util#camelize
+      - Loqate::Util#underscore
+      - Loqate::Util.camelize
+      - Loqate::Util.underscore
   Summary::Presence:
     enabled: true
     exclude:
       - Loqate::Address#==
       - Loqate::Address#attributes
-      - Loqate::Address#id
-      - Loqate::Address#type
-      - Loqate::Address#text
-      - Loqate::Address#highlight
       - Loqate::Address#description
-      - Loqate::AddressGateway#client
-      - Loqate::AddressGateway#mapper
-      - Loqate::AddressGateway#error_mapper
-      - Loqate::AddressGateway#build_error_from
+      - Loqate::Address#highlight
+      - Loqate::Address#id
+      - Loqate::Address#text
+      - Loqate::Address#type
       - Loqate::AddressGateway#build_addresses_from
       - Loqate::AddressGateway#build_detailed_address_from
-      - Loqate::Client#configuration
+      - Loqate::AddressGateway#build_error_from
+      - Loqate::AddressGateway#client
+      - Loqate::AddressGateway#error_mapper
+      - Loqate::AddressGateway#mapper
+      - Loqate::Bank::Gateway#build_account_validation_from
+      - Loqate::Bank::Gateway#build_account_validations_from
+      - Loqate::Bank::Gateway#build_branch_from
+      - Loqate::Bank::Gateway#build_card_validation_from
+      - Loqate::Bank::Gateway#build_error_from
+      - Loqate::Bank::Gateway#build_int_acc_validation_from
+      - Loqate::Bank::Gateway#client
+      - Loqate::Bank::Gateway#error_mapper
+      - Loqate::Bank::Gateway#mapper
       - Loqate::Client#authenticate_params
+      - Loqate::Client#configuration
       - Loqate::Client#format_params
       - Loqate::Client#headers
-      - Loqate::DetailedAddress#initialize
       - Loqate::DetailedAddress#==
-      - Loqate::EmailGateway#error_mapper
-      - Loqate::EmailGateway#client
-      - Loqate::EmailGateway#mapper
-      - Loqate::EmailGateway#build_error_from
+      - Loqate::DetailedAddress#initialize
       - Loqate::EmailGateway#build_email_validation_from
       - Loqate::EmailGateway#build_email_validations_from
+      - Loqate::EmailGateway#build_error_from
+      - Loqate::EmailGateway#client
+      - Loqate::EmailGateway#error_mapper
+      - Loqate::EmailGateway#mapper
       - Loqate::Error#attributes
       - Loqate::Gateway#client
-      - Loqate::PhoneGateway#mapper
-      - Loqate::PhoneGateway#error_mapper
-      - Loqate::PhoneGateway#client
       - Loqate::PhoneGateway#build_error_from
       - Loqate::PhoneGateway#build_phone_validation_from
+      - Loqate::PhoneGateway#client
+      - Loqate::PhoneGateway#error_mapper
+      - Loqate::PhoneGateway#mapper
       - Loqate::Result::Failure#error
   Summary::Length:
     enabled: false

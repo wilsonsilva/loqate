@@ -24,6 +24,12 @@ Client to address verification, postcode lookup, & data quality services from Lo
   - [Email API](#phone-api)
     - [Validating an email address](#validating-an-email-address)
     - [Validating multiple email addresses](#validating-multiple-email-addresses)
+  - [Bank API](#bank-api)
+    - [Retrieving the details of a bank branch](#retrieving-the-details-of-a-bank-branch)
+    - [Validating a bank account](#validating-a-bank-account)
+    - [Validating an international bank account](#validating-an-international-bank-account)
+    - [Validating multiple bank accounts](#validating-multiple-bank-accounts)
+    - [Validating a card](#validating-a-card)
 - [Development](#development)
 - [Contributing](#contributing)
 - [License](#license)
@@ -187,6 +193,45 @@ email_validation.valid?            # => true
 email_validation.invalid?          # => false
 email_validation.unknown?          # => false
 email_validation.unverified?       # => false
+```
+
+### Bank API
+
+The Bank API exposes endpoints to validate bank accounts, cards and finding bank branches by sort code.
+
+#### Retrieving the details of a bank branch
+```ruby
+bank_branch = gateway.bank.retrieve_by_sortcode!(sort_code: '404131')
+bank_branch.bank # => HSBC UK BANK PLC
+```
+
+#### Validating a bank account
+```ruby
+account_validation = gateway.bank.validate_account(account_number: '51065718', sort_code: '404131')
+account_validation.correct? # => true
+```
+
+#### Validating an international bank account
+
+```ruby
+account_validation = gateway.bank.validate_international_account!(iban: 'GB03 BARC 201147 8397 7692')
+account_validation.correct? # => true
+```
+
+#### Validating multiple bank accounts
+```ruby
+accounts_validations = gateway.bank.batch_validate_accounts!(
+  account_numbers: %w[51065718 00000000],
+  sort_codes: %w[40-41-31 000000]
+)
+accounts_validations.first.correct? # => true
+accounts_validations.second.correct? # => false
+```
+
+#### Validating a card
+```ruby
+card_validation = gateway.bank.validate_card!(card_number: '4024007171239865')
+card_validation.card_type # => VISA
 ```
    
 ## Development
