@@ -1,6 +1,7 @@
 require 'loqate/address/gateway'
 require 'loqate/bank/gateway'
 require 'loqate/email/gateway'
+require 'loqate/geocoding/gateway'
 require 'loqate/phone/gateway'
 
 module Loqate
@@ -32,6 +33,14 @@ module Loqate
     #
     def address
       @address ||= Address::Gateway.new(client)
+    end
+
+    # Gateway to the Geocoding APIs.
+    #
+    # @return [Geocoding::Gateway] An instance of a geocoding gateway.
+    #
+    def geocoding
+      @geocoding ||= Geocoding::Gateway.new(client)
     end
 
     # Gateway to the Phone number API.

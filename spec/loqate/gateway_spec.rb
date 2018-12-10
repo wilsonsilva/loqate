@@ -9,6 +9,12 @@ RSpec.describe Loqate::Gateway do
     end
   end
 
+  describe '#geocoding' do
+    it 'returns a geocoding gateway' do
+      expect(gateway.geocoding).to be_an_instance_of(Loqate::Geocoding::Gateway)
+    end
+  end
+
   describe '#phone' do
     it 'returns a phone gateway' do
       expect(gateway.phone).to be_an_instance_of(Loqate::Phone::Gateway)

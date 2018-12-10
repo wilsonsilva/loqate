@@ -121,8 +121,19 @@ rules:
       - Loqate::Gateway#bank
       - Loqate::Gateway#config
       - Loqate::Gateway#email
+      - Loqate::Gateway#geocoding
       - Loqate::Gateway#initialize
       - Loqate::Gateway#phone
+      - Loqate::Geocoding::Gateway#initialize
+      - Loqate::Geocoding::Direction#segment_number
+      - Loqate::Geocoding::Direction#step_number
+      - Loqate::Geocoding::Direction#action
+      - Loqate::Geocoding::Direction#description
+      - Loqate::Geocoding::Direction#road
+      - Loqate::Geocoding::Direction#step_time
+      - Loqate::Geocoding::Direction#step_distance
+      - Loqate::Geocoding::Direction#total_time
+      - Loqate::Geocoding::Direction#total_distance
       - Loqate::Phone::Gateway#initialize
       - Loqate::Phone::PhoneNumberValidation#country_prefix
       - Loqate::Phone::PhoneNumberValidation#is_valid
@@ -179,6 +190,11 @@ rules:
       - Loqate::Email::Gateway#mapper
       - Loqate::Error#attributes
       - Loqate::Gateway#client
+      - Loqate::Geocoding::Gateway#error_mapper
+      - Loqate::Geocoding::Gateway#client
+      - Loqate::Geocoding::Gateway#mapper
+      - Loqate::Geocoding::Gateway#build_error_from
+      - Loqate::Geocoding::Gateway#build_directions_from
       - Loqate::Phone::Gateway#build_error_from
       - Loqate::Phone::Gateway#build_phone_validation_from
       - Loqate::Phone::Gateway#client
@@ -228,6 +244,11 @@ rules:
       - Loqate::Email::Gateway#mapper
       - Loqate::Error#attributes
       - Loqate::Gateway#client
+      - Loqate::Geocoding::Gateway#error_mapper
+      - Loqate::Geocoding::Gateway#client
+      - Loqate::Geocoding::Gateway#mapper
+      - Loqate::Geocoding::Gateway#build_error_from
+      - Loqate::Geocoding::Gateway#build_directions_from
       - Loqate::Phone::Gateway#build_error_from
       - Loqate::Phone::Gateway#build_phone_validation_from
       - Loqate::Phone::Gateway#client

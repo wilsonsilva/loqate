@@ -1,0 +1,71 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.addressy.com/DistancesAndDirections/Interactive/Directions/v2.00/json3.ws?Finish=380600,258400&Key=<LOQATE_API_KEY>&Start=381600,259400
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Connection:
+      - close
+      Host:
+      - api.addressy.com
+      User-Agent:
+      - http.rb/4.0.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Mon, 10 Dec 2018 21:17:30 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '1106'
+      Vary:
+      - Accept-Encoding
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Expires:
+      - "-1"
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Content-Type, pca-source
+      Records:
+      - '6'
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Xss-Protection:
+      - '1'
+      X-Robots-Tag:
+      - noindex
+      Via:
+      - 1.1 google
+      Set-Cookie:
+      - GCLB=CJOsyrLc1b_u8QE; path=/; HttpOnly; expires=Mon, 10-Dec-2018 21:18:29
+        GMT
+      Alt-Svc:
+      - clear
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"Items":[{"SegmentNumber":0,"StepNumber":0,"Action":"D","Description":"Leave
+        from Moseley Road","Road":"Moseley Road","StepTime":0,"StepDistance":0,"TotalTime":0,"TotalDistance":0},{"SegmentNumber":0,"StepNumber":1,"Action":"R2","Description":"Turn
+        right onto Moseley Road","Road":"Moseley Road","StepTime":14,"StepDistance":150,"TotalTime":14,"TotalDistance":150},{"SegmentNumber":0,"StepNumber":2,"Action":"R1","Description":"Bear
+        right at A443","Road":"A443","StepTime":82,"StepDistance":1004,"TotalTime":96,"TotalDistance":1154},{"SegmentNumber":0,"StepNumber":3,"Action":"R2","Description":"Turn
+        right onto Shoulton Lane","Road":"Shoulton Lane","StepTime":41,"StepDistance":529,"TotalTime":137,"TotalDistance":1683},{"SegmentNumber":0,"StepNumber":4,"Action":"R1","Description":"Bear
+        right at Shoulton Lane","Road":"Shoulton Lane","StepTime":18,"StepDistance":55,"TotalTime":155,"TotalDistance":1738},{"SegmentNumber":0,"StepNumber":5,"Action":"A","Description":"You
+        have arrived. Your destination is on the left","Road":"[]","StepTime":204,"StepDistance":2214,"TotalTime":359,"TotalDistance":3952}]}'
+    http_version: 
+  recorded_at: Mon, 10 Dec 2018 21:17:30 GMT
+recorded_with: VCR 4.0.0
