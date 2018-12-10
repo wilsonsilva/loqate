@@ -19,6 +19,8 @@ Client to address verification, postcode lookup, & data quality services from Lo
   - [Address API](#address-api)
     - [Finding addresses](#finding-addresses)
     - [Retrieving the details of an address](#retrieving-the-details-of-an-address)
+  - [Geocoding API](#geocoding-api)
+    - [Finding directions](#finding-directions)
   - [Phone API](#phone-api)
     - [Validating a phone number](#validating-a-phone-number)
   - [Email API](#phone-api)
@@ -125,6 +127,19 @@ address = gateway.address.retrieve!(id: 'GB|RM|B|8144611')
 address.city        # 'London' 
 address.line1       # '148 Warner Road'
 address.postal_code # 'E17 7EA'
+```
+
+### Geocoding API
+
+The Geocoding API exposes endpoints to perform geocoding operations.
+
+#### Finding directions
+```ruby
+directions = gateway.geocoding.directions!(
+  start: [51.5079532, -0.1266053],
+  finish: [51.5078677, -0.1266825]
+)
+directions.first.description # => 'Leave from Strand/A4'
 ```
 
 ### Phone API
