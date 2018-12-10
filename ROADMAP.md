@@ -5,6 +5,7 @@
 - [x] HTTP Client
 - [x] Core Client
 - [ ] Logging
+- [ ] Instrumentation
 - [x] Domain error handling
 - [x] Configuration
 - [x] Unwrap request results
