@@ -1,3 +1,5 @@
+require: rubocop-rspec
+
 AllCops:
   DisplayCopNames: true
 
@@ -14,6 +16,11 @@ Metrics/LineLength:
 Naming/MethodName:
   Exclude:
     - lib/loqate/result.rb
+
+# ----------------------- RSpec -----------------------
+
+RSpec/ExampleLength:
+  Enabled: false
 
 # ----------------------- Style -----------------------
 

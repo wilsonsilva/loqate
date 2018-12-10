@@ -73,8 +73,8 @@ RSpec.describe Loqate::Phone::PhoneNumberValidation do
   describe '#==' do
     context 'when the attributes are different' do
       it 'returns false' do
-        number_validation1 = Loqate::Phone::PhoneNumberValidation.new(attributes)
-        number_validation2 = Loqate::Phone::PhoneNumberValidation.new(attributes.merge(network_name: 'Giffgaff'))
+        number_validation1 = described_class.new(attributes)
+        number_validation2 = described_class.new(attributes.merge(network_name: 'Giffgaff'))
 
         expect(number_validation1).not_to eq(number_validation2)
       end
@@ -82,8 +82,8 @@ RSpec.describe Loqate::Phone::PhoneNumberValidation do
 
     context 'when the attributes are the same' do
       it 'returns true' do
-        number_validation1 = Loqate::Phone::PhoneNumberValidation.new(attributes)
-        number_validation2 = Loqate::Phone::PhoneNumberValidation.new(attributes)
+        number_validation1 = described_class.new(attributes)
+        number_validation2 = described_class.new(attributes)
 
         expect(number_validation1).to eq(number_validation2)
       end

@@ -49,7 +49,7 @@ RSpec.describe Loqate::Error do
     end
 
     context 'when comparing with another class' do
-      let(:error2) { double(id: 1006) }
+      let(:error2) { instance_double('Loqate::Error', id: 1006) }
 
       it 'returns true' do
         expect(error).not_to eq(error2)

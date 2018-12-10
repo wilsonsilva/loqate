@@ -33,7 +33,7 @@ RSpec.describe Loqate::Address::DetailedAddress do
     end
 
     context 'when comparing with another class' do
-      let(:address2) { double(id: 1) }
+      let(:address2) { instance_double('Loqate::Error', id: 1) }
 
       it 'returns true' do
         expect(address).not_to eq(address2)

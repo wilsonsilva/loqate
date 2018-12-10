@@ -66,51 +66,53 @@ RSpec.describe Loqate::Bank::Gateway, vcr: true do
           sort_codes: %w[40-41-31 083210]
         )
 
-        expect(result.value.first).to eq(
-          Loqate::Bank::BatchAccountValidation.new(
-            bank: 'HSBC UK BANK PLC',
-            bank_bic: 'HBUKGB41',
-            branch: 'Sheffield City',
-            branch_bic: '54D',
-            contact_address_line1: 'Carmel House',
-            contact_address_line2: '49-63 Fargate',
-            contact_fax: '',
-            contact_phone: '',
-            contact_post_town: 'Sheffield',
-            contact_postcode: 'S1 2HD',
-            corrected_account_number: '51065718',
-            corrected_sort_code: '404131',
-            iban: 'GB67HBUK40413151065718',
-            is_correct: true,
-            is_direct_debit_capable: true,
-            original_account_number: '51065718',
-            original_sort_code: '404131',
-            status_information: 'OK'
+        aggregate_failures do
+          expect(result.value.first).to eq(
+            Loqate::Bank::BatchAccountValidation.new(
+              bank: 'HSBC UK BANK PLC',
+              bank_bic: 'HBUKGB41',
+              branch: 'Sheffield City',
+              branch_bic: '54D',
+              contact_address_line1: 'Carmel House',
+              contact_address_line2: '49-63 Fargate',
+              contact_fax: '',
+              contact_phone: '',
+              contact_post_town: 'Sheffield',
+              contact_postcode: 'S1 2HD',
+              corrected_account_number: '51065718',
+              corrected_sort_code: '404131',
+              iban: 'GB67HBUK40413151065718',
+              is_correct: true,
+              is_direct_debit_capable: true,
+              original_account_number: '51065718',
+              original_sort_code: '404131',
+              status_information: 'OK'
+            )
           )
-        )
 
-        expect(result.value.last).to eq(
-          Loqate::Bank::BatchAccountValidation.new(
-            bank: 'GOVERNMENT BANKING',
-            bank_bic: '',
-            branch: 'Hmrc Direct Taxes',
-            branch_bic: '',
-            contact_address_line1: '',
-            contact_address_line2: '',
-            contact_fax: '',
-            contact_phone: '',
-            contact_post_town: '',
-            contact_postcode: '',
-            corrected_account_number: '12001020',
-            corrected_sort_code: '083210',
-            iban: '',
-            is_correct: true,
-            is_direct_debit_capable: false,
-            original_account_number: '12001020',
-            original_sort_code: '083210',
-            status_information: 'CautiousOK'
+          expect(result.value.last).to eq(
+            Loqate::Bank::BatchAccountValidation.new(
+              bank: 'GOVERNMENT BANKING',
+              bank_bic: '',
+              branch: 'Hmrc Direct Taxes',
+              branch_bic: '',
+              contact_address_line1: '',
+              contact_address_line2: '',
+              contact_fax: '',
+              contact_phone: '',
+              contact_post_town: '',
+              contact_postcode: '',
+              corrected_account_number: '12001020',
+              corrected_sort_code: '083210',
+              iban: '',
+              is_correct: true,
+              is_direct_debit_capable: false,
+              original_account_number: '12001020',
+              original_sort_code: '083210',
+              status_information: 'CautiousOK'
+            )
           )
-        )
+        end
       end
     end
   end
