@@ -22,6 +22,7 @@ Client to address verification, postcode lookup, & data quality services from Lo
   - [Geocoding API](#geocoding-api)
     - [Finding directions](#finding-directions)
     - [Geocoding a location](#geocoding-a-location)
+    - [Finding a country based on coordinates](#finding-a-country-based-on-coordinates)
   - [Phone API](#phone-api)
     - [Validating a phone number](#validating-a-phone-number)
   - [Email API](#phone-api)
@@ -147,6 +148,12 @@ directions.first.description # => 'Leave from Strand/A4'
 ```ruby
 location = gateway.geocoding.geocode!(country: 'US', location: '90210')
 location.name # => 'Beverly Hills, CA 90210'
+```
+
+#### Finding a country based on coordinates
+```ruby
+country = gateway.geocoding.position_to_country!(latitude: 52.1321, longitude: -2.1001)
+country.country_name # => 'United Kingdom'
 ```
 
 ### Phone API

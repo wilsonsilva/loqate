@@ -1,5 +1,6 @@
 require 'loqate/client'
 require 'loqate/result'
+require 'loqate/geocoding/country'
 require 'loqate/geocoding/direction'
 require 'loqate/geocoding/location'
 require 'loqate/mappers/error_mapper'
@@ -11,6 +12,7 @@ module Loqate
     class Gateway
       DIRECTIONS_ENDPOINT = '/DistancesAndDirections/Interactive/Directions/v2.00/json3.ws'.freeze
       GEOCODE_ENDPOINT = '/Geocoding/International/Geocode/v1.10/json3.ws'.freeze
+      POSITION_TO_COUNTRY_ENDPOINT = '/Geocoding/International/PositionToCountry/v1.00/json3.ws'.freeze
 
       include Result::Mixin
 
@@ -129,6 +131,39 @@ module Loqate
         unwrap_result_or_raise { geocode(options) }
       end
 
+      # Returns the country based on the WGS84 latitude and longitude supplied. No result is returned if
+      # the coordinates are in international waters.
+      #
+      # @param [Hash] options The coordinates of the position to search against.
+      # @option options [Float] :latitude The latitude of the position to search against.
+      # @option options [Float] :longitude The longitude of the position to search against.
+      #
+      # @example
+      #   result = geocoding_gateway.position_to_country(latitude: 52.1321, longitude: -2.1001)
+      #
+      # @return [Result|nil] A result wrapping a country.
+      #
+      def position_to_country(options)
+        response = client.get(POSITION_TO_COUNTRY_ENDPOINT, options)
+
+        return Success(nil) if response.items.empty?
+
+        response.errors? && build_error_from(response.items.first) || build_country_from(response.items.first)
+      end
+
+      # Returns the country based on the WGS84 latitude and longitude supplied. No result is returned if
+      # the coordinates are in international waters.
+      #
+      # @raise [Error] If the result is not a success
+      #
+      # @see Loqate::Geocoding::Geocoding#position_to_country
+      #
+      # @return [Country] A country.
+      #
+      def position_to_country!(options)
+        unwrap_result_or_raise { position_to_country(options) }
+      end
+
       private
 
       # @api private
@@ -150,6 +185,12 @@ module Loqate
       def build_location_from(item)
         location = mapper.map_one(item, Location)
         Success(location)
+      end
+
+      # @api private
+      def build_country_from(item)
+        country = mapper.map_one(item, Country)
+        Success(country)
       end
     end
   end

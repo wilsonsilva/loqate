@@ -81,6 +81,11 @@ rules:
       - Loqate::Bank::CardValidation#card_type
       - Loqate::Bank::Gateway#build_branch_from
       - Loqate::Bank::Gateway#initialize
+      - Loqate::Geocoding::Country#country_name
+      - Loqate::Geocoding::Country#country_iso2
+      - Loqate::Geocoding::Country#country_iso3
+      - Loqate::Geocoding::Country#country_iso_number
+      - Loqate::Geocoding::Gateway#position_to_country!
       - Loqate::Geocoding::Gateway#directions!
       - Loqate::Geocoding::Gateway#geocode!
       - Loqate::Geocoding::Location#name
@@ -196,6 +201,7 @@ rules:
       - Loqate::Email::Gateway#mapper
       - Loqate::Error#attributes
       - Loqate::Gateway#client
+      - Loqate::Geocoding::Gateway#build_country_from
       - Loqate::Geocoding::Gateway#build_location_from
       - Loqate::Geocoding::Gateway#error_mapper
       - Loqate::Geocoding::Gateway#client
@@ -251,6 +257,7 @@ rules:
       - Loqate::Email::Gateway#mapper
       - Loqate::Error#attributes
       - Loqate::Gateway#client
+      - Loqate::Geocoding::Gateway#build_country_from
       - Loqate::Geocoding::Gateway#error_mapper
       - Loqate::Geocoding::Gateway#client
       - Loqate::Geocoding::Gateway#mapper

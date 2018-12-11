@@ -390,4 +390,92 @@ RSpec.describe Loqate::Geocoding::Gateway, vcr: true do
       end
     end
   end
+
+  describe '#position_to_country!' do
+    context 'when invoked without a latitude' do
+      it 'returns an error' do
+        result = gateway.position_to_country(longitude: -2.1001)
+
+        expect(result.value).to eq(
+          Loqate::Error.new(
+            cause: 'The Latitude or Longitude parameters are invalid.',
+            description: 'Location Invalid',
+            id: 1001,
+            resolution: 'Check the coordinates and try again.'
+          )
+        )
+      end
+    end
+
+    context 'when invoked without a longitude' do
+      it 'returns an error' do
+        result = gateway.position_to_country(latitude: 52.1321)
+
+        expect(result.value).to eq(
+          Loqate::Error.new(
+            cause: 'The Latitude or Longitude parameters are invalid.',
+            description: 'Location Invalid',
+            id: 1001,
+            resolution: 'Check the coordinates and try again.'
+          )
+        )
+      end
+    end
+
+    context 'when the position is invalid' do
+      it 'returns an error' do
+        result = gateway.position_to_country(latitude: 555, longitude: 555)
+
+        expect(result.value).to eq(
+          Loqate::Error.new(
+            cause: 'The Latitude or Longitude parameters are invalid.',
+            description: 'Location Invalid',
+            id: 1001,
+            resolution: 'Check the coordinates and try again.'
+          )
+        )
+      end
+    end
+
+    context 'when the position belongs to a country' do
+      it 'returns a country' do
+        result = gateway.position_to_country(latitude: 52.1321, longitude: -2.1001)
+
+        expect(result.value).to eq(
+          Loqate::Geocoding::Country.new(
+            country_name: 'United Kingdom',
+            country_iso2: 'GBR',
+            country_iso3: 'GB',
+            country_iso_number: 826
+          )
+        )
+      end
+    end
+
+    context 'when the position is in international waters' do
+      it 'returns nil' do
+        result = gateway.position_to_country(latitude: 41.568186, longitude: -26.674526)
+
+        expect(result.value).to eq(nil)
+      end
+    end
+  end
+
+  describe '#position_to_country' do
+    context 'when the result is successful' do
+      it 'returns the unwrapped result' do
+        location = gateway.position_to_country!(latitude: 52.1321, longitude: -2.1001)
+
+        expect(location).to be_an_instance_of(Loqate::Geocoding::Country)
+      end
+    end
+
+    context 'when the result is not successful' do
+      it 'raises an error' do
+        expect do
+          gateway.position_to_country!(latitude: 555, longitude: 555)
+        end.to raise_error(Loqate::Error, 'Location Invalid')
+      end
+    end
+  end
 end
