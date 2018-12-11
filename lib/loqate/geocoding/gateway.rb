@@ -85,6 +85,18 @@ module Loqate
         response.errors? && build_error_from(response.items.first) || build_directions_from(response.items)
       end
 
+      # Returns the directions between two or more points.
+      #
+      # @raise [Error] If the result is not a success
+      #
+      # @see Loqage::Geocoding::Geocoding#directions
+      #
+      # @return [Array<Direction>] A list of directions.
+      #
+      def directions!(options)
+        unwrap_result_or_raise { directions(options) }
+      end
+
       private
 
       # @api private

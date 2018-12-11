@@ -285,4 +285,25 @@ RSpec.describe Loqate::Geocoding::Gateway, vcr: true do
       end
     end
   end
+
+  describe '#directions!' do
+    context 'when the result is successful' do
+      it 'returns the unwrapped result' do
+        directions = gateway.directions!(
+          start: [51.5079532, -0.1266053],
+          finish: [51.5078677, -0.1266825]
+        )
+
+        expect(directions).to all(be_an_instance_of(Loqate::Geocoding::Direction))
+      end
+    end
+
+    context 'when the result is not successful' do
+      it 'raises an error' do
+        expect do
+          gateway.directions!(finish: [51.5078677, -0.1266825])
+        end.to raise_error(Loqate::Error, 'Start Required')
+      end
+    end
+  end
 end

@@ -124,6 +124,7 @@ rules:
       - Loqate::Gateway#geocoding
       - Loqate::Gateway#initialize
       - Loqate::Gateway#phone
+      - Loqate::Geocoding::Gateway#directions
       - Loqate::Geocoding::Gateway#initialize
       - Loqate::Geocoding::Direction#segment_number
       - Loqate::Geocoding::Direction#step_number
