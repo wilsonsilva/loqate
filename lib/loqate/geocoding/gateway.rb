@@ -1,14 +1,16 @@
 require 'loqate/client'
 require 'loqate/result'
 require 'loqate/geocoding/direction'
+require 'loqate/geocoding/location'
 require 'loqate/mappers/error_mapper'
 require 'loqate/mappers/generic_mapper'
 
 module Loqate
   module Geocoding
-    # Retrieves
+    # Performs API requests to the geocoding services.
     class Gateway
       DIRECTIONS_ENDPOINT = '/DistancesAndDirections/Interactive/Directions/v2.00/json3.ws'.freeze
+      GEOCODE_ENDPOINT = '/Geocoding/International/Geocode/v1.10/json3.ws'.freeze
 
       include Result::Mixin
 
@@ -97,6 +99,36 @@ module Loqate
         unwrap_result_or_raise { directions(options) }
       end
 
+      # Returns the WGS84 latitude and longitude for the given location. Supports most international locations.
+      #
+      # @param [Hash] options The options to geocode.
+      # @option options [String] :country The name or ISO 2 or 3 character code for the country to search in.
+      #   Most country names will be recognised but the use of the ISO country code is recommended for clarity.
+      # @option options [String] :location The location to geocode. This can be a postal code or place name.
+      #
+      # @example
+      #   result = geocoding_gateway.geocode(country: 'US', location: '90210')
+      #
+      # @return [Result] A result wrapping a location.
+      #
+      def geocode(options)
+        response = client.get(GEOCODE_ENDPOINT, options)
+
+        response.errors? && build_error_from(response.items.first) || build_location_from(response.items.first)
+      end
+
+      # Returns the WGS84 latitude and longitude for the given location. Supports most international locations.
+      #
+      # @raise [Error] If the result is not a success
+      #
+      # @see Loqate::Geocoding::Geocoding#geocode
+      #
+      # @return [Location] A location.
+      #
+      def geocode!(options)
+        unwrap_result_or_raise { geocode(options) }
+      end
+
       private
 
       # @api private
@@ -109,9 +141,15 @@ module Loqate
       end
 
       # @api private
-      def build_directions_from(item)
-        direction = mapper.map(item, Direction)
+      def build_directions_from(items)
+        direction = mapper.map(items, Direction)
         Success(direction)
+      end
+
+      # @api private
+      def build_location_from(item)
+        location = mapper.map_one(item, Location)
+        Success(location)
       end
     end
   end

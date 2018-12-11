@@ -306,4 +306,88 @@ RSpec.describe Loqate::Geocoding::Gateway, vcr: true do
       end
     end
   end
+
+  describe '#geocode' do
+    context 'when invoked without country' do
+      it 'returns an error' do
+        result = gateway.geocode(location: '90210')
+
+        # According to the official documentation, this should return the error 1001.
+        expect(result.value).to eq(
+          Loqate::Error.new(
+            cause: 'The Country parameter was not recognised. Check the spelling and, if in doubt, use a valid ISO 2 \
+              or 3 digit country code.',
+            description: 'Country Required',
+            id: 1002,
+            resolution: 'Provide a valid ISO 2 or 3 digit country code or use a web service to convert country name \
+              to ISO code.'
+          )
+        )
+      end
+    end
+
+    context 'when invoked with an unknown country' do
+      it 'returns an error' do
+        result = gateway.geocode(country: 'LOL', location: '90210')
+
+        expect(result.value).to eq(
+          Loqate::Error.new(
+            cause: 'The Country parameter was not recognised. Check the spelling and, if in doubt, use a valid ISO 2 \
+              or 3 digit country code.',
+            description: 'Country Required',
+            id: 1002,
+            resolution: 'Provide a valid ISO 2 or 3 digit country code or use a web service to convert country name \
+              to ISO code.'
+          )
+        )
+      end
+    end
+
+    context 'when invoked without a location' do
+      it 'returns an error' do
+        result = gateway.geocode(country: 'US')
+
+        expect(result.value).to eq(
+          Loqate::Error.new(
+            cause: 'No Location data was supplied but one is needed.',
+            description: 'Location Required',
+            id: 1003,
+            resolution: 'Please ensure that you supply a location and try again.'
+          )
+        )
+      end
+    end
+
+    context 'when invoked with a country and a location' do
+      it 'geocodes a location' do
+        result = gateway.geocode(country: 'US', location: '90210')
+
+        expect(result.value).to eq(
+          Loqate::Geocoding::Location.new(
+            name: 'Beverly Hills, CA 90210',
+            latitude: 34.08057,
+            longitude: -118.40033
+          )
+        )
+      end
+    end
+  end
+
+  describe '#geocode!' do
+    context 'when the result is successful' do
+      it 'returns the unwrapped result' do
+        location = gateway.geocode!(country: 'US', location: '90210')
+
+        expect(location).to be_an_instance_of(Loqate::Geocoding::Location)
+      end
+    end
+
+    context 'when the result is not successful' do
+      it 'raises an error' do
+        expect do
+          gateway.geocode!(country: 'LOL', location: '90210')
+        end.to raise_error(Loqate::Error, 'Country Unknown')
+      end
+    end
+  end
 end
