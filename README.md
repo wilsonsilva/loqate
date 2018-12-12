@@ -23,6 +23,7 @@ Client to address verification, postcode lookup, & data quality services from Lo
     - [Finding directions](#finding-directions)
     - [Geocoding a location](#geocoding-a-location)
     - [Finding a country based on coordinates](#finding-a-country-based-on-coordinates)
+    - [Finding nearest places](#finding-nearest-places)
   - [Phone API](#phone-api)
     - [Validating a phone number](#validating-a-phone-number)
   - [Email API](#phone-api)
@@ -154,6 +155,17 @@ location.name # => 'Beverly Hills, CA 90210'
 ```ruby
 country = gateway.geocoding.position_to_country!(latitude: 52.1321, longitude: -2.1001)
 country.country_name # => 'United Kingdom'
+```
+
+#### Finding nearest places
+```ruby
+nearest_places = gateway.geocoding.retrieve_nearest_places!(
+  centre_point: [-33.440113067627, 149.578567504883],
+  maximum_items: 5,
+  maximum_radius: 10,
+  filter_options: 'HideVillages'
+)
+nearest_places.first.location # => 'South Bathurst, NSW, Australia'
 ```
 
 ### Phone API

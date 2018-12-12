@@ -3,6 +3,7 @@ require 'loqate/result'
 require 'loqate/geocoding/country'
 require 'loqate/geocoding/direction'
 require 'loqate/geocoding/location'
+require 'loqate/geocoding/place'
 require 'loqate/mappers/error_mapper'
 require 'loqate/mappers/generic_mapper'
 
@@ -13,6 +14,7 @@ module Loqate
       DIRECTIONS_ENDPOINT = '/DistancesAndDirections/Interactive/Directions/v2.00/json3.ws'.freeze
       GEOCODE_ENDPOINT = '/Geocoding/International/Geocode/v1.10/json3.ws'.freeze
       POSITION_TO_COUNTRY_ENDPOINT = '/Geocoding/International/PositionToCountry/v1.00/json3.ws'.freeze
+      NEAREST_PLACES_ENDPOINT = '/Geocoding/International/RetrieveNearestPlaces/v1.00/json3.ws'.freeze
 
       include Result::Mixin
 
@@ -141,7 +143,7 @@ module Loqate
       # @example
       #   result = geocoding_gateway.position_to_country(latitude: 52.1321, longitude: -2.1001)
       #
-      # @return [Result|nil] A result wrapping a country.
+      # @return [Result] A result wrapping a country or wrapping nil if no country is found.
       #
       def position_to_country(options)
         response = client.get(POSITION_TO_COUNTRY_ENDPOINT, options)
@@ -162,6 +164,52 @@ module Loqate
       #
       def position_to_country!(options)
         unwrap_result_or_raise { position_to_country(options) }
+      end
+
+      # Calculates the nearest places of interest of a given category to a given location.
+      #
+      # @param [Hash] options The coordinates of the position to search against.
+      # @option options [String] :country The ISO3 character code for the country to search in. This parameter is
+      #   optional, but if you wish to use a place for the centre point the country code must be provided.
+      # @option options [String] :centre_point A postcode or coordinates (latitude, longitude) of the centre of the
+      #   search. Can also be a place name (corresponding country code must be provided).
+      # @option options [Integer] :maximum_items The maximum number of items to return. If 0, all items are returned.
+      # @option options [Float] :maximum_radius The maximum search distance in KM between the origin and a point of
+      #   interest. If blank or 0, all items are returned.
+      # @option options [Float] :filter_options The type of filter to apply where the search returns a list of towns.
+      #
+      # @example Retrieving the nearest places around a coordinate
+      #   result = geocoding_gateway.retrieve_nearest_places(
+      #     centre_point: [-33.440113067627, 149.578567504883],
+      #     maximum_items: 5,
+      #     maximum_radius: 10
+      #   )
+      #
+      # @example Retrieving the nearest places around a postcode
+      #   result = geocoding_gateway.retrieve_nearest_places(
+      #     centre_point: 'NW10 6RB',
+      #     maximum_items: 5,
+      #     maximum_radius: 10
+      #   )
+      #
+      # @return [Result] A result wrapping a list of places.
+      #
+      def retrieve_nearest_places(options)
+        response = client.get(NEAREST_PLACES_ENDPOINT, options)
+
+        response.errors? && build_error_from(response.items.first) || build_places_from(response.items)
+      end
+
+      # Calculates the nearest places of interest of a given category to a given location.
+      #
+      # @raise [Error] If the result is not a success
+      #
+      # @see Loqate::Geocoding::Geocoding#retrieve_nearest_places
+      #
+      # @return [Array<Place>] A list of places.
+      #
+      def retrieve_nearest_places!(options)
+        unwrap_result_or_raise { retrieve_nearest_places(options) }
       end
 
       private
@@ -191,6 +239,12 @@ module Loqate
       def build_country_from(item)
         country = mapper.map_one(item, Country)
         Success(country)
+      end
+
+      # @api private
+      def build_places_from(items)
+        places = mapper.map(items, Place)
+        Success(places)
       end
     end
   end

@@ -478,4 +478,207 @@ RSpec.describe Loqate::Geocoding::Gateway, vcr: true do
       end
     end
   end
+
+  describe '#find_nearest_places' do
+    context 'when invoked without a centre point' do
+      it 'returns an error' do
+        result = gateway.retrieve_nearest_places(
+          maximum_items: 1,
+          maximum_radius: 10
+        )
+
+        expect(result.value).to eq(
+          Loqate::Error.new(
+            cause: 'The CentrePoint parameter was not supplied.',
+            description: 'CentrePoint Required',
+            id: 1001,
+            resolution: 'Please ensure that you supply the CentrePoint parameter and try again.'
+          )
+        )
+      end
+    end
+
+    context 'when invoked with an invalid centre point' do
+      it 'returns an error' do
+        result = gateway.retrieve_nearest_places(
+          centre_point: [555, 555],
+          maximum_items: 1,
+          maximum_radius: 10
+        )
+
+        expect(result.value).to eq(
+          Loqate::Error.new(
+            cause: 'The CentrePoint parameter must contain a postcode or latitude, longitude coordinate pair \
+              separated by commas, or place (in combination with a country code).',
+            description: 'CentrePoint Invalid',
+            id: 1002,
+            resolution: 'Check the coordinates and try again.'
+          )
+        )
+      end
+    end
+
+    context 'when invoked with invalid maximum items' do
+      it 'returns an error' do
+        result = gateway.retrieve_nearest_places(
+          centre_point: [-33.440113067627, 149.578567504883],
+          maximum_items: 'a',
+          maximum_radius: 10
+        )
+
+        expect(result.value).to eq(
+          Loqate::Error.new(
+            cause: 'The MaximumItems parameter should be a non-negative integer.',
+            description: 'MaximumItems Invalid',
+            id: 1003,
+            resolution: 'Check the MaximumItems and try again.'
+          )
+        )
+      end
+    end
+
+    context 'when invoked with invalid maximum radius' do
+      it 'returns an error' do
+        result = gateway.retrieve_nearest_places(
+          centre_point: [-33.440113067627, 149.578567504883],
+          maximum_items: 1,
+          maximum_radius: 'a'
+        )
+
+        expect(result.value).to eq(
+          Loqate::Error.new(
+            cause: 'The MaximumRadius parameter should be a non-negative floating point number.',
+            description: 'MaximumRadius Invalid',
+            id: 1004,
+            resolution: 'Check the MaximumRadius and try again.'
+          )
+        )
+      end
+    end
+
+    # Error 1005 is not possible to reproduce because maximum_time does not exist.
+
+    context 'when invoked with invalid filter options' do
+      it 'returns an error' do
+        result = gateway.retrieve_nearest_places(
+          centre_point: [-33.440113067627, 149.578567504883],
+          maximum_items: 1,
+          maximum_radius: 10,
+          filter_options: 'a'
+        )
+
+        expect(result.value).to eq(
+          Loqate::Error.new(
+            cause: 'The FilterOptions parameter should be None, HideVillages, HideSmallTowns or HideTowns.',
+            description: 'FilterOptions Invalid',
+            id: 1006,
+            resolution: 'Check the FilterOptions parameter and try again.'
+          )
+        )
+      end
+    end
+
+    # Error 1007 is not possible to reproduce. All the calls above don't have a country, but still work.
+
+    context 'when invoked with an unknown country' do
+      it 'returns an error' do
+        result = gateway.retrieve_nearest_places(
+          centre_point: [-33.440113067627, 149.578567504883],
+          maximum_items: 1,
+          maximum_radius: 10,
+          country: 'LOL'
+        )
+
+        expect(result.value).to eq(
+          Loqate::Error.new(
+            cause: 'The Country parameter was not recognised. Check the spelling and, if in doubt, use a valid \
+              ISO 2 or 3 digit country code.',
+            description: 'Start Invalid',
+            id: 1008,
+            resolution: 'Provide a valid ISO 2 or 3 digit country code or use a web service to convert country \
+              name to ISO code.'
+          )
+        )
+      end
+    end
+
+    context 'when invoked with a place as center point but without a country' do
+      it 'returns an error' do
+        result = gateway.retrieve_nearest_places(
+          centre_point: 'South Bathurst',
+          maximum_items: 1,
+          maximum_radius: 10
+        )
+
+        expect(result.value).to eq(
+          Loqate::Error.new(
+            cause: 'To use a place for the centre point a country must be provided.',
+            description: 'Country Required For Place',
+            id: 1009,
+            resolution: 'Enter the ISO3 country code corresponding to the place you wish to use for the centrepoint.'
+          )
+        )
+      end
+    end
+
+    context 'when invoked with a postcode' do
+      it 'returns the nearest places' do
+        result = gateway.retrieve_nearest_places(
+          centre_point: 'NW10 6RB',
+          maximum_items: 1,
+          maximum_radius: 10
+        )
+
+        expect(result.value).to contain_exactly(
+          Loqate::Geocoding::Place.new(
+            location: 'College Park, Hammersmith &Fulham, United Kingdom',
+            distance: 0.4,
+            latitude: 51.5280799865723,
+            longitude: -0.235471531748772
+          )
+        )
+      end
+    end
+
+    context 'when invoked with a coordinate pair' do
+      it 'returns the nearest places' do
+        result = gateway.retrieve_nearest_places(
+          centre_point: [-33.440113067627, 149.578567504883],
+          maximum_items: 1,
+          maximum_radius: 10
+        )
+
+        expect(result.value).to contain_exactly(
+          Loqate::Geocoding::Place.new(
+            location: 'South Bathurst, NSW, Australia',
+            distance: 0.0,
+            latitude: -33.440113067627,
+            longitude: 149.578567504883
+          )
+        )
+      end
+    end
+  end
+
+  describe '#find_nearest_places!' do
+    context 'when the result is successful' do
+      it 'returns the unwrapped result' do
+        places = gateway.retrieve_nearest_places!(
+          centre_point: 'NW10 6RB',
+          maximum_items: 1,
+          maximum_radius: 10
+        )
+
+        expect(places).to all(be_an_instance_of(Loqate::Geocoding::Place))
+      end
+    end
+
+    context 'when the result is not successful' do
+      it 'raises an error' do
+        expect do
+          gateway.retrieve_nearest_places!(maximum_items: 1, maximum_radius: 10)
+        end.to raise_error(Loqate::Error, 'CentrePoint Required')
+      end
+    end
+  end
 end

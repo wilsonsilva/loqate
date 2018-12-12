@@ -1,0 +1,124 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.addressy.com/Geocoding/International/RetrieveNearestPlaces/v1.00/json3.ws?CentrePoint=149.578567504883&Key=<LOQATE_API_KEY>&MaximumItems=a&MaximumRadius=10
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Connection:
+      - close
+      Host:
+      - api.addressy.com
+      User-Agent:
+      - http.rb/4.0.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Wed, 12 Dec 2018 20:06:57 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '189'
+      Vary:
+      - Accept-Encoding
+      Cache-Control:
+      - private
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Content-Type, pca-source
+      Records:
+      - '1'
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Xss-Protection:
+      - '1'
+      X-Robots-Tag:
+      - noindex
+      Via:
+      - 1.1 google
+      Set-Cookie:
+      - GCLB=CPDCm96WnMuQOw; path=/; HttpOnly; expires=Wed, 12-Dec-2018 20:07:57 GMT
+      Alt-Svc:
+      - clear
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"Items":[{"Error":"1003","Description":"MaximumItems Invalid","Cause":"The
+        MaximumItems parameter should be a non-negative integer.","Resolution":"Check
+        the MaximumItems and try again."}]}'
+    http_version: 
+  recorded_at: Wed, 12 Dec 2018 20:06:57 GMT
+- request:
+    method: get
+    uri: https://api.addressy.com/Geocoding/International/RetrieveNearestPlaces/v1.00/json3.ws?CentrePoint=NW10%206RB&Key=<LOQATE_API_KEY>&MaximumItems=1&MaximumRadius=10
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Connection:
+      - close
+      Host:
+      - api.addressy.com
+      User-Agent:
+      - http.rb/4.0.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Wed, 12 Dec 2018 20:07:38 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '150'
+      Vary:
+      - Accept-Encoding
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Expires:
+      - "-1"
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Content-Type, pca-source
+      Records:
+      - '1'
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Xss-Protection:
+      - '1'
+      X-Robots-Tag:
+      - noindex
+      Via:
+      - 1.1 google
+      Set-Cookie:
+      - GCLB=COmI2eSDhaCMxQE; path=/; HttpOnly; expires=Wed, 12-Dec-2018 20:08:37
+        GMT
+      Alt-Svc:
+      - clear
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"Items":[{"Location":"College Park, Hammersmith &Fulham, United Kingdom","Distance":0.4,"Latitude":51.5280799865723,"Longitude":-0.235471531748772}]}'
+    http_version: 
+  recorded_at: Wed, 12 Dec 2018 20:07:38 GMT
+recorded_with: VCR 4.0.0
