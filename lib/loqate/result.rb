@@ -64,6 +64,7 @@ module Loqate
         true
       end
 
+      # The original return value of a failure. Usually an error message.
       alias error value
     end
 
