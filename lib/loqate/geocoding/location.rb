@@ -1,7 +1,7 @@
 module Loqate
   module Geocoding
     # A result from the geocode API call.
-    class Location < Dry::Struct::Value
+    class Location < Dry::Struct
       # The name of the location found.
       #
       # @return [String]

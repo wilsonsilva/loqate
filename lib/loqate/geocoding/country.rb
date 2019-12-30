@@ -1,7 +1,7 @@
 module Loqate
   module Geocoding
     # A result from the position to country API call.
-    class Country < Dry::Struct::Value
+    class Country < Dry::Struct
       # The name of the country where the position belongs to.
       #
       # @return [String]

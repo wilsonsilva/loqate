@@ -1,7 +1,7 @@
 module Loqate
   module Address
     # A result from the address find service.
-    class Address < Dry::Struct::Value
+    class Address < Dry::Struct
       # An address ID or a container ID for further results
       #
       # @return [String]

@@ -1,7 +1,7 @@
 module Loqate
   module Email
     # Result of a email address validation.
-    class EmailValidation < Dry::Struct::Value
+    class EmailValidation < Dry::Struct
       ResponseCode = Types::Strict::String.enum('Valid', 'Valid_CatchAll', 'Invalid', 'Timeout')
 
       # Valid - The email address has been fully validated (including the account portion)

@@ -1,7 +1,7 @@
 module Loqate
   module Bank
     # Result of a bank account validation.
-    class AccountValidation < Dry::Struct::Value
+    class AccountValidation < Dry::Struct
       StatusInformation = Types::Strict::String.enum('DetailsChanged', 'CautiousOK')
 
       # Indicates whether the account number and sortcode are valid.

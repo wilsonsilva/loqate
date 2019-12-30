@@ -1,7 +1,7 @@
 module Loqate
   module Geocoding
     # A result from the directions API call.
-    class Direction < Dry::Struct::Value
+    class Direction < Dry::Struct
       # A zero based counter indicating the row number.
       #
       # @return [Integer]

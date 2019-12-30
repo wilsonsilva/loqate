@@ -1,7 +1,7 @@
 module Loqate
   module Geocoding
     # A result from the API call to find the nearest places.
-    class Place < Dry::Struct::Value
+    class Place < Dry::Struct
       # The postcode that is nearest to the given location.
       #
       # @return [String]

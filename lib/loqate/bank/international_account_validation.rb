@@ -1,7 +1,7 @@
 module Loqate
   module Bank
     # Result of an international bank account validation.
-    class InternationalAccountValidation < Dry::Struct::Value
+    class InternationalAccountValidation < Dry::Struct
       # Indicates whether the account number and sortcode are valid.
       #
       # @return [Boolean]

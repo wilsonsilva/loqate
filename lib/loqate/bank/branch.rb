@@ -1,7 +1,7 @@
 module Loqate
   module Bank
     # Result of a bank branch retrieval.
-    class Branch < Dry::Struct::Value
+    class Branch < Dry::Struct
       # The name of the banking institution.
       #
       # @return [String]

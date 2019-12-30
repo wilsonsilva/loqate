@@ -1,7 +1,7 @@
 module Loqate
   module Bank
     # Result of a batch bank account validation.
-    class BatchAccountValidation < Dry::Struct::Value
+    class BatchAccountValidation < Dry::Struct
       StatusInformation = Types::Strict::String.enum('CautiousOK', 'DetailsChanged', 'OK')
 
       # The original AccountNumber passed to validate, excluding any non numeric characters.
