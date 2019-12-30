@@ -4,6 +4,6 @@ require 'dry/struct'
 module Loqate
   # Dry-types container.
   module Types
-    include Dry::Types.module
+    include Dry.Types()
   end
 end
