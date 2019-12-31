@@ -1,7 +1,7 @@
 module Loqate
   module Email
     # Result of a batch email address validation.
-    class BatchEmailValidation < Dry::Struct::Value
+    class BatchEmailValidation < Dry::Struct
       Status = Types::Strict::String.enum('Valid', 'Invalid', 'Unknown', 'Accept_All')
 
       # Valid - The email address is valid

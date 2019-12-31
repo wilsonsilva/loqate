@@ -1,7 +1,7 @@
 module Loqate
   module Phone
     # Result of a phone number validation.
-    class PhoneNumberValidation < Dry::Struct::Value
+    class PhoneNumberValidation < Dry::Struct
       IsValid = Types::Strict::String.enum('Yes', 'No', 'Unknown')
       NumberType = Types::Strict::String.enum('Mobile', 'Landline', 'Voip', 'Unknown')
 

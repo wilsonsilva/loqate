@@ -1,11 +1,13 @@
 require 'loqate/result'
 
 RSpec.describe Loqate::Result::Mixin do
-  class ExampleAction
-    include Loqate::Result::Mixin
-  end
+  subject(:action) { klass.new }
 
-  let(:action) { ExampleAction.new }
+  let(:klass) do
+    Class.new do
+      include Loqate::Result::Mixin
+    end
+  end
 
   describe '#Failure' do
     it 'returns a failure result' do

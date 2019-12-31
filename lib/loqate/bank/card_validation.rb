@@ -1,7 +1,7 @@
 module Loqate
   module Bank
     # Result of a card validation.
-    class CardValidation < Dry::Struct::Value
+    class CardValidation < Dry::Struct
       # The cleaned card number.
       #
       # @return [String]
