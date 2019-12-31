@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.10.1] - 2019-12-31
+### Changed
+- Relaxed the dependency on `bundler` to support Bundler 2.x and later
+- Replaced `.ruby-versions` with `.tools-versions` because `asdf` is a modular package manager for all languages
+- Set the Ruby development version to `2.6.5`
+
+## Fixed
+- Renamed `Dry::Struct::Value` to `Dry::Struct` to fix a deprecation warning
+- Renamed `Dry::Types.module` to `Dry.Types()` to fix a deprecation warning
+
 ## [0.10.1] - 2019-04-29
 ### Fixed
 - Updated `dry-struct` to version `1.0`, which has a more stable API
