@@ -22,8 +22,8 @@ module Loqate
     #
     # @see Configuration
     #
-    def initialize(options)
-      @config = Configuration.new(options)
+    def initialize(**options)
+      @config = Configuration.new(**options)
       @client = Client.new(config)
     end
 
