@@ -25,7 +25,7 @@ module Loqate
         attributes = item.transform_keys { |attribute| Util.underscore(attribute) }
         attributes[:id] = attributes.delete(:error).to_i
 
-        Loqate::Error.new(attributes)
+        Loqate::Error.new(**attributes)
       end
     end
   end
