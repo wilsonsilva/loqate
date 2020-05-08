@@ -3,10 +3,6 @@ sudo: false
 language: ruby
 cache: bundler
 
-env:
-  global:
-    - CC_TEST_REPORTER_ID=b25183239ab212ebe6b73b13e25fe32ff06b542836e2e1d8786fa8966954b63f
-
 rvm:
   - 2.5
   - 2.6
