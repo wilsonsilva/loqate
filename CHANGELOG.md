@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.10.4] - 2020-05-08
+### Changed
+- Updated `HTTP` to version `4.3`
+- Updated `Rake` to version `12.3`
+
+### Fixed
+- Fixed an [incompatibility with Ruby 2.7](https://github.com/httprb/http/issues/582)
+
 ## [0.10.3] - 2020-01-13
 ### Changed
 - Updated Rubocop to version `0.78`
@@ -95,6 +103,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Initial core functionality
 - Codebase maintenance tools
 
+[0.10.4]: https://github.com/wilsonsilva/loqate/compare/v0.10.3...v0.10.4
 [0.10.3]: https://github.com/wilsonsilva/loqate/compare/v0.10.2...v0.10.3
 [0.10.2]: https://github.com/wilsonsilva/loqate/compare/v0.10.1...v0.10.2
 [0.10.1]: https://github.com/wilsonsilva/loqate/compare/v0.10.0...v0.10.1
