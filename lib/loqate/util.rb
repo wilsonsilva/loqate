@@ -26,7 +26,7 @@ module Loqate
     def camelize(term)
       string = term.to_s
       string = string.sub(/^[a-z\d]*/, &:capitalize)
-      string.gsub!(%r{(?:_|(\/))([a-z\d]*)}) { "#{Regexp.last_match(1)}#{Regexp.last_match(2).capitalize}" }
+      string.gsub!(%r{(?:_|(/))([a-z\d]*)}) { "#{Regexp.last_match(1)}#{Regexp.last_match(2).capitalize}" }
       string.gsub!('/'.freeze, '::'.freeze)
       string
     end
