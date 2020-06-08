@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+## Changed
+- Updated `bundler` to version `2.1`
+- Updated `guard` to version `2.16`
+- Updated `guard-bundler` to version `3.0`
+- Updated `guard-rubocop` to version `1.3`
+- Updated `overcommit` to version `0.53`
+- Updated `pry` to version `0.13`
+- Updated `rubocop` to version `0.85`
+- Updated `rubocop-rspec` to version `1.39`
+- Updated `simplecov-console` to version `0.7`
+- Updated `vcr` to version `6.0`
+- Updated `webmock` to version `3.8`
+- Enabled the newest RuboCop rules
+- Set the local development Ruby version to 2.7.1
+
 ## [0.10.4] - 2020-05-08
 ### Changed
 - Updated `HTTP` to version `4.3`
