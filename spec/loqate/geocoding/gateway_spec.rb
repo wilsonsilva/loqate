@@ -1,7 +1,7 @@
 require 'loqate/geocoding/gateway'
 
 RSpec.describe Loqate::Geocoding::Gateway, vcr: true do
-  let(:dev_api_key)   { File.read(File.dirname(__FILE__) + '/../../../.api_key').strip }
+  let(:dev_api_key)   { File.read("#{File.dirname(__FILE__)}/../../../.api_key").strip }
   let(:configuration) { Loqate::Configuration.new(api_key: dev_api_key) }
   let(:client)        { Loqate::Client.new(configuration) }
   let(:gateway)       { described_class.new(client) }

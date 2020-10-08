@@ -70,8 +70,8 @@ module Loqate
 
     # Utility methods to conveniently return +Success+ or +Failure+ results.
     module Mixin
-      Success = Success
-      Failure = Failure
+      Success = ::Loqate::Result::Success
+      Failure = ::Loqate::Result::Failure
 
       # Wraps the result of an operation in a +Success+ result.
       #

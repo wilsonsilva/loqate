@@ -4,10 +4,9 @@ require 'loqate/mappers/error_mapper'
 require 'loqate/mappers/generic_mapper'
 require 'loqate/bank/account_validation'
 require 'loqate/bank/batch_account_validation'
-require 'loqate/bank/card_validation'
 require 'loqate/bank/branch'
-require 'loqate/bank/international_account_validation'
 require 'loqate/bank/card_validation'
+require 'loqate/bank/international_account_validation'
 
 module Loqate
   module Bank

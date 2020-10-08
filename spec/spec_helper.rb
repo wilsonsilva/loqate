@@ -7,7 +7,7 @@ require 'simplecov-console'
 SimpleCov.formatter = SimpleCov::Formatter::Console
 SimpleCov.start do
   root 'lib'
-  coverage_dir Dir.pwd + '/coverage'
+  coverage_dir "#{Dir.pwd}/coverage"
 end
 
 require 'loqate'
@@ -17,7 +17,7 @@ require 'webmock/rspec'
 require 'pry'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in spec/support/ and its subdirectories.
-Dir[File.dirname(__FILE__) + '/support/**/*.rb'].sort.each { |file| require file }
+Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].sort.each { |file| require file }
 
 WebMock.disable_net_connect!(allow_localhost: true)
 
@@ -27,7 +27,7 @@ VCR.configure do |config|
   config.configure_rspec_metadata!
   config.ignore_localhost = true
   config.filter_sensitive_data('<LOQATE_API_KEY>') do
-    api_key_file_path = File.dirname(__FILE__) + '/../.api_key'
+    api_key_file_path = "#{File.dirname(__FILE__)}/../.api_key"
     File.read(api_key_file_path).strip
   end
 
