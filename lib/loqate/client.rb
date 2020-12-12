@@ -38,8 +38,12 @@ module Loqate
 
       response = HTTP.headers(headers).get(configuration.host + endpoint, params: formatted_params)
 
-      body = JSON.parse(response.body)
-      APIResult.new(body.fetch('Items'))
+      if response.status.success?
+        body = JSON.parse(response.body)
+        APIResult.new(body.fetch('Items'))
+      else
+        APIResult.error(status: response.status)
+      end
     end
 
     private

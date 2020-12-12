@@ -15,6 +15,19 @@ module Loqate
       @items = items
     end
 
+    def self.error(status:)
+      new(
+        [
+          {
+            'Error' => '-2',
+            'Description' => 'Something went wrong - please try again later',
+            'Resolution' => 'Try again later',
+            'Cause' => "Server returned response with #{status}"
+          }
+        ]
+      )
+    end
+
     # Whether the response contains errors
     #
     # @return [Boolean] true if the response has errors and false otherwise
