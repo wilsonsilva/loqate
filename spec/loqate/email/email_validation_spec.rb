@@ -1,6 +1,7 @@
 require 'loqate/email/email_validation'
 
 RSpec.describe Loqate::Email::EmailValidation do
+  let(:duration) { 0.241566504 }
   let(:attributes) do
     {
       response_code: 'Valid',
@@ -10,10 +11,36 @@ RSpec.describe Loqate::Email::EmailValidation do
       domain: 'wilsonsilva.net',
       is_disposable_or_temporary: false,
       is_complainer_or_fraud_risk: false,
-      duration: 0.241566504
+      duration: duration
     }
   end
   let(:email_validation) { described_class.new(attributes) }
+
+  describe 'attributes coercion' do
+    context 'when the duration cannot be coerced into a float' do
+      let(:duration) { 'not-a-coercible-float' }
+
+      it 'raises an error' do
+        expect { email_validation }.to raise_error(Dry::Struct::Error, /invalid type for :duration/)
+      end
+    end
+
+    context 'when the duration is an integer' do
+      let(:duration) { 1 }
+
+      it 'coerces the duration into a float' do
+        expect(email_validation.duration).to eq(1.0)
+      end
+    end
+
+    context 'when the duration is a string' do
+      let(:duration) { '0.367289412' }
+
+      it 'coerces the duration into a float' do
+        expect(email_validation.duration).to eq(0.367289412)
+      end
+    end
+  end
 
   describe '#response_code' do
     it 'exposes the validity of the email' do
@@ -59,7 +86,7 @@ RSpec.describe Loqate::Email::EmailValidation do
 
   describe '#duration' do
     it 'exposes the duration (in seconds) that the email validation took' do
-      expect(email_validation.duration).to eq(0.241566504)
+      expect(email_validation.duration).to eq(duration)
     end
   end
 

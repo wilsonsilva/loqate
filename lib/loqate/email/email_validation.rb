@@ -57,7 +57,7 @@ module Loqate
       #
       # @return [Float]
       #
-      attribute :duration, Types::Strict::Float
+      attribute :duration, Types::Coercible::Float
 
       # Whether the email was fully validated (including the account portion).
       def valid?
