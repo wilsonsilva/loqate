@@ -10,7 +10,6 @@ RSpec.describe Loqate::Email::EmailValidation do
       user_account: 'contact',
       domain: 'wilsonsilva.net',
       is_disposable_or_temporary: false,
-      is_complainer_or_fraud_risk: false,
       duration: duration
     }
   end
@@ -75,12 +74,6 @@ RSpec.describe Loqate::Email::EmailValidation do
   describe '#is_disposable_or_temporary' do
     it 'exposes whether the email address provided is a disposable mailbox' do
       expect(email_validation.is_disposable_or_temporary).to eq(false)
-    end
-  end
-
-  describe '#is_complainer_or_fraud_risk' do
-    it 'exposes whether the email address has been flagged as fraud or recognized as a complainer' do
-      expect(email_validation.is_complainer_or_fraud_risk).to eq(false)
     end
   end
 
