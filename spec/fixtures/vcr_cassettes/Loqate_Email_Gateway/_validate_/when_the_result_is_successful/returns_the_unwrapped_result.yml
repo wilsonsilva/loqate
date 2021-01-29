@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.addressy.com/EmailValidation/Interactive/Validate/v2.00/json3.ws?Email=contact@wilsonsilva.net&Key=<LOQATE_API_KEY>
+    uri: https://api.addressy.com/EmailValidation/Interactive/Validate/v2.00/json3.ws?Email=support@google.com&Key=<LOQATE_API_KEY>
     body:
       encoding: UTF-8
       string: ''
@@ -14,20 +14,20 @@ http_interactions:
       Host:
       - api.addressy.com
       User-Agent:
-      - http.rb/4.0.0
+      - http.rb/4.4.1
   response:
     status:
       code: 200
       message: OK
     headers:
       Server:
-      - nginx/1.10.3 (Ubuntu)
+      - nginx/1.14.0 (Ubuntu)
       Date:
-      - Fri, 16 Nov 2018 08:34:56 GMT
+      - Thu, 21 Jan 2021 15:22:18 GMT
       Content-Type:
       - application/json;charset=UTF-8
       Content-Length:
-      - '300'
+      - '258'
       Vary:
       - Accept-Encoding
       Cache-Control:
@@ -42,8 +42,6 @@ http_interactions:
       - Content-Type, pca-source
       Records:
       - '1'
-      X-Aspnet-Version:
-      - 4.0.30319
       X-Xss-Protection:
       - '1'
       X-Robots-Tag:
@@ -51,7 +49,7 @@ http_interactions:
       Via:
       - 1.1 google
       Set-Cookie:
-      - GCLB=CNuQ66yzqt_68AE; path=/; HttpOnly; expires=Fri, 16-Nov-2018 08:34:56
+      - GCLB=COzayu33noCxswE; path=/; HttpOnly; expires=Thu, 21-Jan-2021 15:23:17
         GMT
       Alt-Svc:
       - clear
@@ -60,6 +58,6 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"Items":[{"ResponseCode":"Valid_CatchAll","ResponseMessage":"Mail
-        is routable to the domain but account could not be validated","EmailAddress":"contact@wilsonsilva.net","UserAccount":"contact","Domain":"wilsonsilva.net","IsDisposableOrTemporary":false,"IsComplainerOrFraudRisk":false,"Duration":0.241566504}]}'
-    http_version:
-  recorded_at: Fri, 16 Nov 2018 08:34:56 GMT
+        is routable to the domain but account could not be validated","EmailAddress":"support@google.com","UserAccount":"support","Domain":"google.com","IsDisposableOrTemporary":false,"Duration":0}]}'
+  recorded_at: Thu, 21 Jan 2021 15:22:18 GMT
+recorded_with: VCR 6.0.0

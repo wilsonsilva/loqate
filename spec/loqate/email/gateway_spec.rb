@@ -104,36 +104,32 @@ RSpec.describe Loqate::Email::Gateway, vcr: true do
       it 'returns a valid email validation' do
         result = email_gateway.validate(email: 'wilson.silva@gmail.com')
 
-        expect(result.value).to eq(
-          Loqate::Email::EmailValidation.new(
-            response_code: 'Valid',
-            response_message: 'Email address was fully validated',
-            email_address: 'wilson.silva@gmail.com',
-            user_account: 'wilson.silva',
-            domain: 'gmail.com',
-            is_disposable_or_temporary: false,
-            is_complainer_or_fraud_risk: false,
-            duration: 0.007366261
-          )
+        expect(result.value).to have_attributes(
+          class: Loqate::Email::EmailValidation,
+          response_code: 'Valid',
+          response_message: 'Email address was fully validated',
+          email_address: 'wilson.silva@gmail.com',
+          user_account: 'wilson.silva',
+          domain: 'gmail.com',
+          is_disposable_or_temporary: false,
+          duration: an_instance_of(Float)
         )
       end
     end
 
     context 'when only the email domain was validated' do
       it 'returns a partially valid email validation' do
-        result = email_gateway.validate(email: 'contact@wilsonsilva.net')
+        result = email_gateway.validate(email: 'support@google.com')
 
-        expect(result.value).to eq(
-          Loqate::Email::EmailValidation.new(
-            response_code: 'Valid_CatchAll',
-            response_message: 'Mail is routable to the domain but account could not be validated',
-            email_address: 'contact@wilsonsilva.net',
-            user_account: 'contact',
-            domain: 'wilsonsilva.net',
-            is_disposable_or_temporary: false,
-            is_complainer_or_fraud_risk: false,
-            duration: 0.241566504
-          )
+        expect(result.value).to have_attributes(
+          class: Loqate::Email::EmailValidation,
+          response_code: 'Valid_CatchAll',
+          response_message: 'Mail is routable to the domain but account could not be validated',
+          email_address: 'support@google.com',
+          user_account: 'support',
+          domain: 'google.com',
+          is_disposable_or_temporary: false,
+          duration: an_instance_of(Float)
         )
       end
     end
@@ -142,17 +138,15 @@ RSpec.describe Loqate::Email::Gateway, vcr: true do
       it 'returns an invalid email validation' do
         result = email_gateway.validate(email: '404@404.pl')
 
-        expect(result.value).to eq(
-          Loqate::Email::EmailValidation.new(
-            response_code: 'Invalid',
-            response_message: 'Email Address is not valid',
-            email_address: '404@404.pl',
-            user_account: '404',
-            domain: '404.pl',
-            is_disposable_or_temporary: false,
-            is_complainer_or_fraud_risk: false,
-            duration: 0.009907195
-          )
+        expect(result.value).to have_attributes(
+          class: Loqate::Email::EmailValidation,
+          response_code: 'Invalid',
+          response_message: 'Email Address is not valid',
+          email_address: '404@404.pl',
+          user_account: '404',
+          domain: '404.pl',
+          is_disposable_or_temporary: false,
+          duration: an_instance_of(Float)
         )
       end
     end
@@ -161,19 +155,17 @@ RSpec.describe Loqate::Email::Gateway, vcr: true do
   describe '#validate!' do
     context 'when the result is successful' do
       it 'returns the unwrapped result' do
-        email_validation = email_gateway.validate!(email: 'contact@wilsonsilva.net')
+        email_validation = email_gateway.validate!(email: 'support@google.com')
 
-        expect(email_validation).to eq(
-          Loqate::Email::EmailValidation.new(
-            response_code: 'Valid_CatchAll',
-            response_message: 'Mail is routable to the domain but account could not be validated',
-            email_address: 'contact@wilsonsilva.net',
-            user_account: 'contact',
-            domain: 'wilsonsilva.net',
-            is_disposable_or_temporary: false,
-            is_complainer_or_fraud_risk: false,
-            duration: 0.241566504
-          )
+        expect(email_validation).to have_attributes(
+          class: Loqate::Email::EmailValidation,
+          response_code: 'Valid_CatchAll',
+          response_message: 'Mail is routable to the domain but account could not be validated',
+          email_address: 'support@google.com',
+          user_account: 'support',
+          domain: 'google.com',
+          is_disposable_or_temporary: false,
+          duration: an_instance_of(Float)
         )
       end
     end

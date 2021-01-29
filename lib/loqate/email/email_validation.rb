@@ -44,20 +44,13 @@ module Loqate
       #
       attribute :is_disposable_or_temporary, Types::Strict::Bool
 
-      # True if we recognise the email address against known lists of complainers and/or the email address has been
-      # used to defraud.
-      #
-      # @return [Boolean]
-      #
-      attribute :is_complainer_or_fraud_risk, Types::Strict::Bool
-
       # The duration (in seconds) that the email validation took (maximum timeout enforced at 15 seconds).
       # We recommend a high timeout (at least 5 seconds) value as it will minimise the number of "Timeout"
       # responses returned.
       #
       # @return [Float]
       #
-      attribute :duration, Types::Strict::Float
+      attribute :duration, Types::Coercible::Float
 
       # Whether the email was fully validated (including the account portion).
       def valid?
