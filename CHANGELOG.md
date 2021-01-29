@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.11.0] - 2021-01-29
 ## Changed
 - Updated `bundler` to version `2.1`
 - Updated `guard` to version `2.16`
@@ -19,6 +19,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Updated `webmock` to version `3.8`
 - Enabled the newest RuboCop rules
 - Set the local development Ruby version to 2.7.1
+
+## Removed
+- Removed the attribute `is_complainer_or_fraud_risk` from `EmailValidation`. It is no longer supported by Loqate's API
+and will always return `false`.
+
+## Fixed
+- Fixed the type coercion of the attribute `duration` on the `EmailValidation` class:
+```
+[Loqate::Email::EmailValidation.new] 0 (Integer) has invalid type for :duration violates
+  constraints (type?(Float, 0) failed)
+```
 
 ## [0.10.4] - 2020-05-08
 ### Changed
