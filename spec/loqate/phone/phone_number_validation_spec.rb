@@ -91,22 +91,18 @@ RSpec.describe Loqate::Phone::PhoneNumberValidation do
   end
 
   describe '#valid?' do
+    %w[No Unknown Maybe].each do |validation_result|
+      context "when the validation result is '#{validation_result}'" do
+        subject { described_class.new(attributes.merge(is_valid: validation_result)) }
+
+        it { is_expected.not_to be_valid }
+      end
+    end
+
     context 'when the validation result is Yes' do
       subject { described_class.new(attributes.merge(is_valid: 'Yes')) }
 
       it { is_expected.to be_valid }
-    end
-
-    context 'when the validation result is No' do
-      subject { described_class.new(attributes.merge(is_valid: 'No')) }
-
-      it { is_expected.not_to be_valid }
-    end
-
-    context 'when the validation result is Unknown' do
-      subject { described_class.new(attributes.merge(is_valid: 'Unknown')) }
-
-      it { is_expected.not_to be_valid }
     end
   end
 end
