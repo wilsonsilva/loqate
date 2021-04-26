@@ -70,4 +70,3 @@ RSpec.describe Loqate::Client do
     end
   end
 end
-# ~> -:1:in `<main>': uninitialized constant RSpec (NameError)
