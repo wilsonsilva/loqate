@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.12.0] - 2021-04-26
+## Changed
+- Set the gem development Ruby version to Ruby `3.0.1`
+- Ensured compatibility with Ruby `3.0`
+- Updated the API client to handle internal Loqate errors such as `502`:
+```
+JSON::ParserError (767: unexpected token at '<html><head>)
+<meta http-equiv="content-type" content="text/html;charset=utf-8">
+<title>502 Server Error</title>
+</head>
+<body text=#000000 bgcolor=#ffffff>
+<h1>Error: Server Error</h1>
+<h2>The server encountered a temporary error and could not complete your request.<p>Please try again in 30 seconds.</h2>
+<h2></h2>
+</body></html>
+```
+
 ## [0.11.1] - 2021-04-26
 ## Fixed
 - Fixed the allowed values of the enum `Phone::PhoneNumberValidation::IsValid` by adding `Maybe` as a valid value.
@@ -134,6 +151,7 @@ and will always return `false`.
 - Initial core functionality
 - Codebase maintenance tools
 
+[0.12.0]: https://github.com/wilsonsilva/loqate/compare/v0.11.1...v0.12.0
 [0.11.1]: https://github.com/wilsonsilva/loqate/compare/v0.11.0...v0.11.1
 [0.11.0]: https://github.com/wilsonsilva/loqate/compare/v0.10.4...v0.11.0
 [0.10.4]: https://github.com/wilsonsilva/loqate/compare/v0.10.3...v0.10.4
