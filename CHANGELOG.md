@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.11.1] - 2021-04-26
+## Fixed
+- Fixed the allowed values of the enum `Phone::PhoneNumberValidation::IsValid` by adding `Maybe` as a valid value.
+
 ## [0.11.0] - 2021-01-29
 ## Changed
 - Updated `bundler` to version `2.1`
@@ -130,6 +134,7 @@ and will always return `false`.
 - Initial core functionality
 - Codebase maintenance tools
 
+[0.11.1]: https://github.com/wilsonsilva/loqate/compare/v0.11.0...v0.11.1
 [0.11.0]: https://github.com/wilsonsilva/loqate/compare/v0.10.4...v0.11.0
 [0.10.4]: https://github.com/wilsonsilva/loqate/compare/v0.10.3...v0.10.4
 [0.10.3]: https://github.com/wilsonsilva/loqate/compare/v0.10.2...v0.10.3
