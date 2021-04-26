@@ -35,16 +35,14 @@ RSpec.describe Loqate::Client do
     end
 
     context 'when the response has failed' do
-      it 'returns an error' do
-        stub_request(:get, 'https://api.addressy.com/path?Key=fake').to_return(status: 500, body: 'Error')
+      before { stub_request(:get, 'https://api.addressy.com/path?Key=fake').to_return(status: 500, body: 'Error') }
 
+      it 'returns an error' do
         response = client.get('/path')
         expect(response.errors?).to be(true), 'Response should have errors'
       end
 
       it 'creates an error that looks like a Loqate error' do
-        stub_request(:get, 'https://api.addressy.com/path?Key=fake').to_return(status: 500, body: 'Error')
-
         response = client.get('/path')
         expect(response.items).to eq(
           [
