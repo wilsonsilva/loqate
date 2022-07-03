@@ -61,6 +61,24 @@ RSpec.describe Loqate::Phone::Gateway, vcr: true do
           )
         )
       end
+
+      it 'returns a valid voip number validation' do
+        result = phone_gateway.validate(phone: '448451234567', country: 'GB')
+
+        expect(result.value).to eq(
+          Loqate::Phone::PhoneNumberValidation.new(
+            phone_number: '+448451234567',
+            request_processed: true,
+            is_valid: 'Yes',
+            network_code: '',
+            network_name: 'Affiniti Integrated Solutions',
+            network_country: 'GB',
+            national_format: '0845 123 4567',
+            country_prefix: 44,
+            number_type: 'VOIP'
+          )
+        )
+      end
     end
   end
 

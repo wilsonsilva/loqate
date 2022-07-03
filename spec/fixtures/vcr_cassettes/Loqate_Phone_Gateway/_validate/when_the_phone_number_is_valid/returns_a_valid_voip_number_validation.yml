@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.addressy.com/PhoneNumberValidation/Interactive/Validate/v2.20/json3.ws?Country=GB&Key=<LOQATE_API_KEY>&Phone=448451234567
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Connection:
+      - close
+      Host:
+      - api.addressy.com
+      User-Agent:
+      - http.rb/4.4.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.20.2
+      Date:
+      - Wed, 08 Jun 2022 10:01:53 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '240'
+      Vary:
+      - Accept-Encoding
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Expires:
+      - "-1"
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Content-Type, pca-source
+      Records:
+      - '1'
+      X-Robots-Tag:
+      - noindex
+      Via:
+      - 1.1 google
+      Set-Cookie:
+      - GCLB=CPSd3uX3sIzUgQE; path=/; HttpOnly; expires=Wed, 08-Jun-2022 10:02:53
+        GMT
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"Items":[{"PhoneNumber":"+448451234567","RequestProcessed":true,"IsValid":"Yes","NetworkCode":"","NetworkName":"Affiniti
+        Integrated Solutions","NetworkCountry":"GB","NationalFormat":"0845 123 4567","CountryPrefix":44,"NumberType":"VOIP"}]}'
+  recorded_at: Wed, 08 Jun 2022 10:01:53 GMT
+recorded_with: VCR 6.1.0

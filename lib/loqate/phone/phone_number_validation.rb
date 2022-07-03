@@ -3,7 +3,7 @@ module Loqate
     # Result of a phone number validation.
     class PhoneNumberValidation < Dry::Struct
       IsValid = Types::Strict::String.enum('Yes', 'No', 'Unknown', 'Maybe')
-      NumberType = Types::Strict::String.enum('Mobile', 'Landline', 'Voip', 'Unknown')
+      NumberType = Types::Strict::String.enum('Mobile', 'Landline', 'VOIP', 'Unknown')
 
       # The recipient phone number in international format.
       #
