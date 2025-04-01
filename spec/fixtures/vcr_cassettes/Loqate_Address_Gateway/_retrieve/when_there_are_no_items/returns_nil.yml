@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.addressy.com/Capture/Interactive/Retrieve/v1.00/json3.ws?Id=GB%7CRM%7CA%7C50303802%7CEN&Key=<LOQATE_API_KEY>
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Connection:
+      - close
+      Host:
+      - api.addressy.com
+      User-Agent:
+      - http.rb/4.4.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 01 Apr 2025 15:42:16 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '12'
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Expires:
+      - "-1"
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Content-Type, pca-source
+      Records:
+      - '0'
+      X-Robots-Tag:
+      - noindex
+      X-Responsebodysize:
+      - '0'
+      Via:
+      - 1.1 google
+      Set-Cookie:
+      - GCLB=CJDS8Km8w7jyjQEQAw; path=/; HttpOnly; expires=Tue, 01-Apr-2025 15:43:16
+        GMT
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"Items":[]}'
+  recorded_at: Tue, 01 Apr 2025 15:42:16 GMT
+recorded_with: VCR 6.3.1
