@@ -73,6 +73,8 @@ module Loqate
       def retrieve(options)
         response = client.get(RETRIEVE_ENDPOINT, options)
 
+        return Success(nil) if response.items.empty?
+
         response.errors? && build_error_from(response.items.first) || build_detailed_address_from(response.items.first)
       end
 

@@ -113,6 +113,14 @@ RSpec.describe Loqate::Address::Gateway, vcr: true do
         )
       end
     end
+
+    context 'when there are no items' do
+      it 'returns nil' do
+        result = address_gateway.retrieve(id: 'GB|RM|A|50303802|EN')
+
+        expect(result).to have_attributes(class: Loqate::Result::Success, value: nil)
+      end
+    end
   end
 
   describe '#find!' do
